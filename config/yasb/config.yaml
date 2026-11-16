@@ -217,10 +217,10 @@ widgets:
       label_position: "left" # Can be "left" or "right"
       icon_size: 16 # Can be any integer between 8 and 64
       pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
-      show_unpinned: false
+      show_unpinned: true
       show_unpinned_button: true
       show_battery: false
-      show_in_popup: 1
+      show_in_popup: false
       show_volume: false
       icons_per_row: 4
       show_network: false
