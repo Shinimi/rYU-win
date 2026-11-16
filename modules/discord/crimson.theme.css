@@ -1,0 +1,85 @@
+/**
+ * @name rYu Crimson
+ * @author Shinimi
+ * @description Crimson / near-black theme matching the rYu-win desktop
+ * @version 1.0
+ */
+:root, .theme-dark, .theme-darker, .theme-midnight, .visual-refresh {
+  --cr-bg0:#0b0506; --cr-bg1:#120809; --cr-bg2:#1a0b0e; --cr-bg3:#241014;
+  --cr-acc:#dc143c; --cr-acc2:#ff5c7a; --cr-acc-d:#b8102f;
+  --cr-text:#f2e6e7; --cr-muted:#a88a8e; --cr-faint:#6e5256;
+
+  /* classic variables */
+  --background-primary:var(--cr-bg1);
+  --background-secondary:var(--cr-bg0);
+  --background-secondary-alt:var(--cr-bg0);
+  --background-tertiary:#080404;
+  --background-accent:var(--cr-bg3);
+  --background-floating:var(--cr-bg0);
+  --background-nested-floating:var(--cr-bg0);
+  --background-mobile-primary:var(--cr-bg1);
+  --background-mobile-secondary:var(--cr-bg0);
+  --background-modifier-hover:rgba(220,20,60,.08);
+  --background-modifier-active:rgba(220,20,60,.14);
+  --background-modifier-selected:rgba(220,20,60,.20);
+  --background-modifier-accent:rgba(220,20,60,.18);
+  --channeltextarea-background:var(--cr-bg2);
+  --modal-background:var(--cr-bg1);
+  --modal-footer-background:var(--cr-bg0);
+  --deprecated-card-bg:var(--cr-bg2);
+  --deprecated-store-bg:var(--cr-bg1);
+
+  /* 2025+ "visual refresh" variables */
+  --background-base-lowest:#080404;
+  --background-base-lower:var(--cr-bg0);
+  --background-base-low:var(--cr-bg1);
+  --background-surface-high:var(--cr-bg2);
+  --background-surface-higher:var(--cr-bg3);
+  --background-surface-highest:var(--cr-bg3);
+  --chat-background-default:var(--cr-bg1);
+  --app-frame-background:#080404;
+  --panel-bg:var(--cr-bg0);
+  --input-background-default:var(--cr-bg2);
+  --border-subtle:rgba(220,20,60,.15);
+  --border-faint:rgba(220,20,60,.08);
+  --border-normal:rgba(220,20,60,.25);
+
+  /* text */
+  --text-normal:var(--cr-text);
+  --text-default:var(--cr-text);
+  --text-strong:#ffffff;
+  --text-muted:var(--cr-muted);
+  --text-subtle:var(--cr-muted);
+  --text-link:var(--cr-acc2);
+  --header-primary:#ffffff;
+  --header-secondary:var(--cr-muted);
+  --channels-default:var(--cr-muted);
+  --interactive-normal:var(--cr-muted);
+  --interactive-hover:var(--cr-text);
+  --interactive-active:#ffffff;
+  --interactive-muted:var(--cr-faint);
+  --channel-icon:var(--cr-muted);
+
+  /* brand -> crimson */
+  --brand-500:var(--cr-acc);
+  --brand-560:var(--cr-acc-d);
+  --brand-600:var(--cr-acc-d);
+  --brand-experiment:var(--cr-acc);
+  --brand-experiment-560:var(--cr-acc-d);
+  --control-brand-foreground:var(--cr-acc);
+  --control-brand-foreground-new:var(--cr-acc);
+  --button-filled-brand-background:var(--cr-acc);
+  --button-filled-brand-background-hover:var(--cr-acc-d);
+  --mention-foreground:var(--cr-acc2);
+  --mention-background:rgba(220,20,60,.22);
+  --info-warning-foreground:var(--cr-acc2);
+
+  /* scrollbars */
+  --scrollbar-auto-thumb:#3a1418;
+  --scrollbar-auto-track:transparent;
+  --scrollbar-thin-thumb:#3a1418;
+  --scrollbar-thin-track:transparent;
+}
+::selection { background: rgba(220,20,60,.35); }
+/* unread / selected channel pill */
+[class*="unread_"], [class*="item_"][class*="selected"] { background-color: var(--cr-acc) !important; }

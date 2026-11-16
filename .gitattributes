@@ -1,0 +1,8 @@
+* text=auto
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.nss text eol=crlf
+*.ico binary
+*.cur binary
+*.ani binary
+*.zip binary

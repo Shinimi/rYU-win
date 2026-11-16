@@ -1,0 +1,49 @@
+{
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+  "theme": "rYu",
+  "copyOnSelect": true,
+  "confirmCloseAllTabs": false,
+  "showTabsInTitlebar": true,
+  "initialCols": 110,
+  "initialRows": 30,
+  "themes": [
+    {
+      "name": "rYu",
+      "window": { "applicationTheme": "dark", "useMica": false },
+      "tab": { "background": "#120809FF", "unfocusedBackground": "#0B0506FF", "showCloseButton": "hover" },
+      "tabRow": { "background": "#0B0506FF", "unfocusedBackground": "#0B0506FF" }
+    }
+  ],
+  "profiles": {
+    "defaults": {
+      "colorScheme": "rYu Crimson",
+      "font": { "face": "Consolas", "size": 12 },
+      "opacity": 88,
+      "useAcrylic": true,
+      "padding": "14",
+      "cursorShape": "bar",
+      "scrollbarState": "hidden"
+    },
+    "list": [
+      { "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}", "name": "PowerShell", "commandline": "powershell.exe -NoLogo", "hidden": false },
+      { "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}", "name": "cmd", "commandline": "cmd.exe", "hidden": false }
+    ]
+  },
+  "schemes": [
+    {
+      "name": "rYu Crimson",
+      "background": "#0E0708", "foreground": "#F2E6E7",
+      "cursorColor": "#DC143C", "selectionBackground": "#5A1020",
+      "black": "#1A0B0E", "red": "#DC143C", "green": "#8FBF7F", "yellow": "#E8A87C",
+      "blue": "#C25B6E", "purple": "#B03A5B", "cyan": "#E07A8A", "white": "#D9C6C8",
+      "brightBlack": "#4A2A2F", "brightRed": "#FF5C7A", "brightGreen": "#A8D49A", "brightYellow": "#F4C095",
+      "brightBlue": "#E0788C", "brightPurple": "#D0607F", "brightCyan": "#F0A0AC", "brightWhite": "#FFFFFF"
+    }
+  ],
+  "actions": [
+    { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+    { "command": "paste", "keys": "ctrl+v" },
+    { "command": { "action": "splitPane", "split": "auto" }, "keys": "alt+shift+d" }
+  ]
+}

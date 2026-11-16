@@ -1,0 +1,6 @@
+/* rYu Crimson for Spicetify */
+::selection { background: rgba(220,20,60,.35); }
+.main-nowPlayingBar-container, .Root__now-playing-bar { border-top: 1px solid #3a1418 !important; }
+.Root__nav-bar, .Root__main-view, .Root__right-sidebar { border-radius: 10px !important; }
+.os-scrollbar-handle, ::-webkit-scrollbar-thumb { background: #3a1418 !important; }
+.x-progressBar-fillColor, .progress-bar__fg { background-color: #dc143c !important; }

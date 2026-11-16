@@ -1,0 +1,49 @@
+# tacky-borders - animated crimson borders
+watch_config_changes: True
+enable_logging: True
+enable_ipc_server: True
+rendering_backend: V2
+
+global:
+  border_width: 2
+  border_offset: 0
+  border_radius: Square
+  border_z_order: AboveWindow
+  follow_native_border: True
+  initialize_delay: 200
+  unminimize_delay: 150
+
+  # focused window: crimson -> pink -> deep red gradient that slowly spins around the window
+  active_color:
+    colors: ["#dc143c", "#ff5c7a", "#8b0a1e", "#dc143c"]
+    direction: 45deg
+
+  # other windows: quiet dark red
+  inactive_color:
+    colors: ["#3a1418", "#24090c"]
+    direction: 45deg
+
+  animations:
+    active:
+      - type: ReverseSpiral
+        duration: 3500
+        easing: Linear
+      - type: Fade
+        duration: 280
+        easing: EaseOutCubic
+    inactive:
+      - type: Fade
+        duration: 350
+        easing: EaseOutSine
+    fps: 120
+    enabled: True
+
+  # soft crimson glow around the focused window
+  effects:
+    active:
+      - type: Glow
+        blur: 6.0
+        spread: 0.0
+        opacity: 0.6
+    inactive: []
+    enabled: True

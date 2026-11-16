@@ -1,0 +1,187 @@
+# rYu-win - GlazeWM config
+# Hyprland-ish tiling with gaps. Red borders come from tacky-borders
+# (GlazeWM's own borders only work on Windows 11).
+#
+# Win+1..9          workspace 1..9 (main screen)
+# Win+Shift+1..9    send window there, Win+Shift+0 sends it to the side screen
+# Win+Arrows        focus, Win+Shift+Arrows moves the window
+# Win+Q close | Win+V float/tile | Win+F fullscreen | Win+T flip split
+# Win+Space launcher | Win+Enter terminal
+# Alt+Shift+R reload everything | Alt+Shift+E quit
+
+general:
+  startup_commands: []
+  shutdown_commands: []
+  # Alt+Shift+R also restarts the bar (YASB) and the borders
+  config_reload_commands: ['shell-exec --hide-window %USERPROFILE%\.glzr\glazewm\reload-all.cmd']
+  focus_follows_cursor: false
+  toggle_workspace_on_refocus: false
+  cursor_jump:
+    enabled: false
+    trigger: 'monitor_focus'
+  # 'hide' lets Windows play its fade/zoom animation when switching workspaces
+  # (turn on window animations with the 'animations' module). If an app acts weird,
+  # change this back to 'cloak'.
+  hide_method: 'hide'
+
+gaps:
+  scale_with_dpi: true
+  inner_gap: '10px'
+  outer_gap:
+    top: '10px'      # YASB reserves its own space on the main screen
+    right: '10px'
+    bottom: '10px'
+    left: '10px'
+
+window_effects:
+  # Borders / rounded corners only work on Windows 11, so they're off here.
+  focused_window:
+    border:
+      enabled: false
+      color: '#e6e6eb'
+    hide_title_bar:
+      enabled: false
+    corner_style:
+      enabled: false
+      style: 'rounded'
+  other_windows:
+    border:
+      enabled: false
+      color: '#3a3a40'
+    hide_title_bar:
+      enabled: false
+    corner_style:
+      enabled: false
+      style: 'rounded'
+
+window_behavior:
+  initial_state: 'tiling'     # change to 'floating' for normal Windows behaviour
+  state_defaults:
+    floating:
+      centered: true
+      shown_on_top: false
+    fullscreen:
+      maximized: true
+      shown_on_top: false
+
+workspaces:
+  # Main screen gets 1-9, side screen has one fixed workspace.
+  - name: '1'
+    bind_to_monitor: 0
+    keep_alive: true
+  - name: '2'
+    bind_to_monitor: 0
+    keep_alive: false
+  - name: '3'
+    bind_to_monitor: 0
+    keep_alive: false
+  - name: '4'
+    bind_to_monitor: 0
+    keep_alive: false
+  - name: '5'
+    bind_to_monitor: 0
+    keep_alive: false
+  - name: '6'
+    bind_to_monitor: 0
+    keep_alive: false
+  - name: '7'
+    bind_to_monitor: 0
+    keep_alive: false
+  - name: '8'
+    bind_to_monitor: 0
+    keep_alive: false
+  - name: '9'
+    bind_to_monitor: 0
+    keep_alive: false
+  - name: '10'
+    display_name: 'side'
+    bind_to_monitor: 1
+    keep_alive: true
+
+window_rules:
+  - commands: ['ignore']
+    match:
+      - window_process: { equals: 'yasb' }
+      - window_process: { equals: 'Flow.Launcher' }
+      - window_process: { equals: 'thide' }
+      - window_process: { equals: 'tacky-borders' }
+      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
+        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+      - window_process: { equals: 'ShellExperienceHost' }
+      - window_process: { equals: 'SearchApp' }
+
+binding_modes: []
+
+keybindings:
+  - commands: ['focus --workspace 1']
+    bindings: ['lwin+1']
+  - commands: ['focus --workspace 2']
+    bindings: ['lwin+2']
+  - commands: ['focus --workspace 3']
+    bindings: ['lwin+3']
+  - commands: ['focus --workspace 4']
+    bindings: ['lwin+4']
+  - commands: ['focus --workspace 5']
+    bindings: ['lwin+5']
+  - commands: ['focus --workspace 6']
+    bindings: ['lwin+6']
+  - commands: ['focus --workspace 7']
+    bindings: ['lwin+7']
+  - commands: ['focus --workspace 8']
+    bindings: ['lwin+8']
+  - commands: ['focus --workspace 9']
+    bindings: ['lwin+9']
+  - commands: ['move --workspace 1', 'focus --workspace 1']
+    bindings: ['lwin+shift+1']
+  - commands: ['move --workspace 2', 'focus --workspace 2']
+    bindings: ['lwin+shift+2']
+  - commands: ['move --workspace 3', 'focus --workspace 3']
+    bindings: ['lwin+shift+3']
+  - commands: ['move --workspace 4', 'focus --workspace 4']
+    bindings: ['lwin+shift+4']
+  - commands: ['move --workspace 5', 'focus --workspace 5']
+    bindings: ['lwin+shift+5']
+  - commands: ['move --workspace 6', 'focus --workspace 6']
+    bindings: ['lwin+shift+6']
+  - commands: ['move --workspace 7', 'focus --workspace 7']
+    bindings: ['lwin+shift+7']
+  - commands: ['move --workspace 8', 'focus --workspace 8']
+    bindings: ['lwin+shift+8']
+  - commands: ['move --workspace 9', 'focus --workspace 9']
+    bindings: ['lwin+shift+9']
+  - commands: ['move --workspace 10']
+    bindings: ['lwin+shift+0']
+  - commands: ['focus --direction left']
+    bindings: ['lwin+left']
+  - commands: ['move --direction left']
+    bindings: ['lwin+shift+left']
+  - commands: ['focus --direction right']
+    bindings: ['lwin+right']
+  - commands: ['move --direction right']
+    bindings: ['lwin+shift+right']
+  - commands: ['focus --direction up']
+    bindings: ['lwin+up']
+  - commands: ['move --direction up']
+    bindings: ['lwin+shift+up']
+  - commands: ['focus --direction down']
+    bindings: ['lwin+down']
+  - commands: ['move --direction down']
+    bindings: ['lwin+shift+down']
+  # Flow Launcher on Win+Space (Alt+Space is the YASB spotlight search)
+  - commands: ['shell-exec %LOCALAPPDATA%\FlowLauncher\Flow.Launcher.exe']
+    bindings: ['lwin+space']
+  # Terminal on Win+Enter
+  - commands: ['shell-exec %LOCALAPPDATA%\Programs\WindowsTerminal\wt.exe']
+    bindings: ['lwin+enter']
+  - commands: ['close']
+    bindings: ['lwin+q']
+  - commands: ['toggle-floating --centered']
+    bindings: ['lwin+v']
+  - commands: ['toggle-fullscreen']
+    bindings: ['lwin+f']
+  - commands: ['toggle-tiling-direction']
+    bindings: ['lwin+t']
+  - commands: ['wm-reload-config']
+    bindings: ['alt+shift+r']
+  - commands: ['wm-exit']
+    bindings: ['alt+shift+e']

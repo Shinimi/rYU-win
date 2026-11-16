@@ -1,0 +1,106 @@
+{
+  "manifest_version": 3,
+  "name": "Crimson Glass",
+  "version": "1.0",
+  "description": "Crimson and black theme from rYu-win",
+  "theme": {
+    "colors": {
+      "frame": [
+        18,
+        8,
+        9
+      ],
+      "frame_inactive": [
+        12,
+        6,
+        7
+      ],
+      "frame_incognito": [
+        10,
+        4,
+        5
+      ],
+      "toolbar": [
+        30,
+        10,
+        14
+      ],
+      "toolbar_text": [
+        242,
+        230,
+        231
+      ],
+      "toolbar_button_icon": [
+        220,
+        20,
+        60
+      ],
+      "tab_text": [
+        255,
+        255,
+        255
+      ],
+      "tab_background_text": [
+        181,
+        154,
+        157
+      ],
+      "tab_background_text_inactive": [
+        120,
+        95,
+        98
+      ],
+      "bookmark_text": [
+        242,
+        230,
+        231
+      ],
+      "omnibox_background": [
+        42,
+        16,
+        18
+      ],
+      "omnibox_text": [
+        255,
+        255,
+        255
+      ],
+      "ntp_background": [
+        18,
+        8,
+        9
+      ],
+      "ntp_text": [
+        242,
+        230,
+        231
+      ],
+      "ntp_link": [
+        220,
+        20,
+        60
+      ],
+      "ntp_header": [
+        220,
+        20,
+        60
+      ],
+      "button_background": [
+        220,
+        20,
+        60,
+        0.0
+      ]
+    },
+    "tints": {
+      "buttons": [
+        0.97,
+        0.9,
+        0.6
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "center"
+    }
+  }
+}

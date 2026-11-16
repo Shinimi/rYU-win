@@ -1,0 +1,30 @@
+/* Crimson Glass for Waterfox - rYu-win */
+:root {
+  --toolbar-bgcolor: #1e0a0e !important;
+  --toolbar-color: #f2e6e7 !important;
+  --toolbar-field-background-color: #2a1012 !important;
+  --toolbar-field-color: #ffffff !important;
+  --toolbar-field-focus-background-color: #2a1012 !important;
+  --toolbar-field-focus-border-color: #dc143c !important;
+  --tab-selected-bgcolor: #2a1012 !important;
+  --tab-selected-textcolor: #ffffff !important;
+  --focus-outline-color: #dc143c !important;
+  --arrowpanel-background: #160a0c !important;
+  --arrowpanel-color: #f2e6e7 !important;
+  --arrowpanel-border-color: #dc143c !important;
+  --urlbarView-highlight-background: #dc143c !important;
+  --urlbarView-highlight-color: #ffffff !important;
+  --lwt-accent-color: #120809 !important;
+  --lwt-text-color: #f2e6e7 !important;
+}
+#navigator-toolbox { background-color: #120809 !important; border-bottom: 1px solid #dc143c !important; }
+#TabsToolbar, #titlebar { background-color: #120809 !important; }
+.tab-background[selected] { background: #2a1012 !important; box-shadow: inset 0 2px 0 #dc143c !important; }
+.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected]) { background: #24090c !important; }
+.tab-label { color: #b59a9d !important; }
+.tabbrowser-tab[selected] .tab-label { color: #ffffff !important; }
+#nav-bar, #PersonalToolbar { background-color: #1e0a0e !important; color: #f2e6e7 !important; }
+#urlbar-background { background-color: #2a1012 !important; border: 1px solid #3a1418 !important; }
+#urlbar[focused] > #urlbar-background { border-color: #dc143c !important; }
+toolbarbutton .toolbarbutton-icon { fill: #dc143c !important; }
+menupopup, panel { --panel-background: #160a0c !important; --panel-color: #f2e6e7 !important; }

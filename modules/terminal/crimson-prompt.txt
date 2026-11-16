@@ -1,0 +1,21 @@
+# ---- rYu crimson prompt ----
+$e = [char]27
+$crim = "$e[38;2;220;20;60m"; $txt = "$e[38;2;242;230;231m"; $dim = "$e[38;2;168;138;142m"; $r = "$e[0m"
+$arrow = [char]0x276F
+function prompt {
+  $p = $executionContext.SessionState.Path.CurrentLocation.Path
+  if ($p.StartsWith($HOME)) { $p = '~' + $p.Substring($HOME.Length) }
+  $ok = $?
+  $c = if ($ok) { $crim } else { "$e[38;2;255;92;122m" }
+  "`n$dim$env:USERNAME$r $txt$p$r`n$c$arrow$r "
+}
+if (Get-Module -ListAvailable PSReadLine) {
+  Set-PSReadLineOption -Colors @{
+    Command   = "$e[38;2;220;20;60m"; Parameter = "$e[38;2;224;122;138m"
+    String    = "$e[38;2;232;168;124m"; Operator  = "$e[38;2;168;138;142m"
+    Variable  = "$e[38;2;255;92;122m";  Number    = "$e[38;2;244;192;149m"
+    Comment   = "$e[38;2;110;82;86m"
+  } -ErrorAction SilentlyContinue
+}
+if ($env:WT_SESSION -and (Get-Command fastfetch -ErrorAction SilentlyContinue)) { fastfetch }
+# ---- /rYu ----

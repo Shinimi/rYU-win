@@ -1,0 +1,4 @@
+/* rYu Crimson over Simple Dark  -  Steam > Millennium > Quick CSS > Open Editor, paste this */
+:root { --color-light: #3a1418 !important; --color-dark: #1a0b0e !important; --color-darker: #120809 !important; --color-darkest: #0b0506 !important; --scrollbar: #5a1020 !important; --black: #050203 !important; --blacker-ish: #140a0b !important; --blacker: #150a0c !important; --grey: #2a1217 !important; --lightgrey: #3a1a1f !important; --lightergrey: #301519 !important; --grey-ish: #4a2a2f !important; --darkergrey: #0f0708 !important; --thegrey: #120809 !important; --begrey: #221013 !important; --littlegrey: #241014 !important; --darkgrey: #170a0c !important; --darkerwhite: #c8b2b5 !important; --darkwhite: #f2e6e7 !important; --online: #ff5c7a !important; }
+::selection { background: rgba(220,20,60,.4) !important; }
+::-webkit-scrollbar-thumb { background: #5a1020 !important; }
