@@ -24,6 +24,7 @@ $list = [ordered]@{
   'terminal'   = 'Windows Terminal + fastfetch + prompt (Win+Enter)'
   'wsanim'     = 'slide/fade animation when switching workspaces'
   'sidescreen' = 'btop system monitor on the side screen'
+  'admin'      = 'run GlazeWM as admin so keys work in games with anti-cheat'
   'lockscreen' = 'lock + sign-in screen use your wallpaper'
   'discord'    = 'Vesktop / Vencord theme'
   'spotify'    = 'Spicetify theme (desktop Spotify)'

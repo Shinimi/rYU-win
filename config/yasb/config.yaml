@@ -392,18 +392,19 @@ widgets:
   gpu:
     type: "yasb.gpu.GpuWidget"
     options:
-      label: "<span>GPU</span> {info[utilization]}%"
-      label_alt: "<span>VRAM</span> {info[mem_used]}/{info[mem_total]}"
+      label: "<span>\udb80\udeae</span> {info[utilization]}%"
+      label_alt: "<span>\udb80\udeae</span> {info[mem_used]}/{info[mem_total]}"
       update_interval: 2000
       hide_decimal: true
       progress_bar:
         enabled: true
-        progress_type: circular
-        size: 12
-        thickness: 2
+        progress_type: linear_horizontal
+        size: 22
+        thickness: 3
+        radius: 2
         color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
         background_color: "#2a1217"
-        position: left
+        position: right
         animation: true
       callbacks:
         on_left: toggle_menu
@@ -420,8 +421,8 @@ widgets:
   traffic:
     type: "yasb.traffic.TrafficWidget"
     options:
-      label: "<span>\u2193</span> {download_speed} <span>\u2191</span> {upload_speed}"
-      label_alt: "<span>\u2193</span> {download_speed}"
+      label: "<span>\udb80\uddda</span> {download_speed} <span>\udb81\udd52</span> {upload_speed}"
+      label_alt: "<span>\udb80\uddda</span> {download_speed}"
       update_interval: 1000
       speed_unit: bytes
       hide_decimal: true
@@ -458,7 +459,7 @@ widgets:
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 1'
+        on_left: 'exec "__YASBDIR__\ryu-click.exe" --focus-slot 1'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app2:
@@ -477,7 +478,7 @@ widgets:
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 2'
+        on_left: 'exec "__YASBDIR__\ryu-click.exe" --focus-slot 2'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app3:
@@ -496,7 +497,7 @@ widgets:
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 3'
+        on_left: 'exec "__YASBDIR__\ryu-click.exe" --focus-slot 3'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app4:
@@ -515,7 +516,7 @@ widgets:
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 4'
+        on_left: 'exec "__YASBDIR__\ryu-click.exe" --focus-slot 4'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app5:
@@ -534,7 +535,7 @@ widgets:
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 5'
+        on_left: 'exec "__YASBDIR__\ryu-click.exe" --focus-slot 5'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app6:
@@ -553,7 +554,7 @@ widgets:
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 6'
+        on_left: 'exec "__YASBDIR__\ryu-click.exe" --focus-slot 6'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app7:
@@ -572,7 +573,7 @@ widgets:
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 7'
+        on_left: 'exec "__YASBDIR__\ryu-click.exe" --focus-slot 7'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app8:
@@ -591,7 +592,7 @@ widgets:
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 8'
+        on_left: 'exec "__YASBDIR__\ryu-click.exe" --focus-slot 8'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   open_apps:
@@ -643,18 +644,19 @@ widgets:
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
-      label: "<span>CPU</span> {info[percent][total]}%"
-      label_alt: "<span>CPU</span> {info[freq][current]} MHz"
+      label: "<span>\udb83\udee0</span> {info[percent][total]}%"
+      label_alt: "<span>\udb83\udee0</span> {info[freq][current]} MHz"
       update_interval: 2000
       hide_decimal: true
       progress_bar:
         enabled: true
-        progress_type: circular
-        size: 12
-        thickness: 2
+        progress_type: linear_horizontal
+        size: 22
+        thickness: 3
+        radius: 2
         color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
         background_color: "#2a1217"
-        position: left
+        position: right
         animation: true
       cpu_thresholds:
         low: 25
@@ -687,18 +689,19 @@ widgets:
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>RAM</span> {virtual_mem_percent}%"
-      label_alt: "<span>RAM</span> {virtual_mem_used}/{virtual_mem_total}"
+      label: "<span>\udb80\udf5b</span> {virtual_mem_percent}%"
+      label_alt: "<span>\udb80\udf5b</span> {virtual_mem_used}/{virtual_mem_total}"
       update_interval: 3000
       hide_decimal: true
       progress_bar:
         enabled: true
-        progress_type: circular
-        size: 12
-        thickness: 2
+        progress_type: linear_horizontal
+        size: 22
+        thickness: 3
+        radius: 2
         color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
         background_color: "#2a1217"
-        position: left
+        position: right
         animation: true
       callbacks:
         on_left: "toggle_label"

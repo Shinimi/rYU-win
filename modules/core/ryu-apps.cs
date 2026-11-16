@@ -48,6 +48,14 @@ static class RyuApps {
         return proc.Length > 0 ? char.ToUpper(proc[0]) + proc.Substring(1) : "?";
     }
 
+    // small log next to the exe, only written when you click an app
+    static void Log(string line) {
+        try {
+            string p = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ryu-click.log");
+            System.IO.File.AppendAllText(p, DateTime.Now.ToString("HH:mm:ss") + "  " + line + Environment.NewLine);
+        } catch { }
+    }
+
     static void Walk(object node, List<Dictionary<string, object>> found) {
         var d = node as Dictionary<string, object>;
         if (d == null) return;
@@ -81,7 +89,7 @@ static class RyuApps {
     }
 
     static void Main(string[] args) {
-        Console.OutputEncoding = new UTF8Encoding(false);
+        try { Console.OutputEncoding = new UTF8Encoding(false); } catch { }   // throws in the windowless build
         var js = new JavaScriptSerializer { MaxJsonLength = int.MaxValue };
 
         int slot = 0;
@@ -120,11 +128,17 @@ static class RyuApps {
             }
         } catch { }
 
+        if (focusSlot) Log("click on slot " + slot + ", apps found: " + names.Count);
         if (slot > 0) {
             if (slot > names.Count) return;   // nothing printed -> YASB hides the slot
             string n = names[slot - 1];
             Guid g;
-            if (focusSlot) { if (Guid.TryParse(ids[n], out g)) Ipc("command focus --container-id " + g.ToString()); return; }
+            if (focusSlot) {
+                string resp = null;
+                if (Guid.TryParse(ids[n], out g)) resp = Ipc("command focus --container-id " + g.ToString());
+                Log("slot " + slot + " -> " + n + " " + ids[n] + " -> " + (resp == null ? "no answer" : (resp.Length > 300 ? resp.Substring(0, 300) : resp)));
+                return;
+            }
             Console.Write(n == focused ? "\u2022 " + n : n);
             return;
         }

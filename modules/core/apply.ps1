@@ -30,9 +30,9 @@ $y = [IO.File]::ReadAllText("$cfg\yasb\config.yaml").Replace('__WALLPAPERS__', $
 Write-Text "$ydir\config.yaml" $y
 Copy-Item "$cfg\yasb\styles.css" "$ydir\styles.css" -Force
 $fx = "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319"
-# ryu-list.exe (console, feeds the bar) and ryu-apps-click.exe (windowless, used when you click an app)
+# ryu-list.exe (console, feeds the bar) and ryu-click.exe (windowless, used when you click an app)
 & "$fx\csc.exe" /nologo /target:exe /optimize+ "/out:$ydir\ryu-list.exe" "/r:$fx\System.Web.Extensions.dll" "$PSScriptRoot\ryu-apps.cs" | Out-Null
-& "$fx\csc.exe" /nologo /target:winexe /optimize+ "/out:$ydir\ryu-apps-click.exe" "/r:$fx\System.Web.Extensions.dll" "$PSScriptRoot\ryu-apps.cs" | Out-Null
+& "$fx\csc.exe" /nologo /target:winexe /optimize+ "/out:$ydir\ryu-click.exe" "/r:$fx\System.Web.Extensions.dll" "$PSScriptRoot\ryu-apps.cs" | Out-Null
 if ($LASTEXITCODE -ne 0) { Warn 'could not build the open-apps helper, the app list will stay empty' }
 Ok 'YASB'
 

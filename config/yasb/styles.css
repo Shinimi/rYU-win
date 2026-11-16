@@ -1887,40 +1887,45 @@ which is 16 pixels same as the other sections. */
     color: var(--accent);
 }
 
-/* System info + network: flat, evenly spaced, no boxes */
-.sysinfo-group, .net-group { background-color: transparent; padding: 0; margin: 0 6px; }
+/* System info + network: icon, number, small meter. One rhythm, no boxes */
+.sysinfo-group, .net-group { background-color: transparent; padding: 0; margin: 0 4px; }
 .sysinfo-group .container, .net-group .container { background-color: transparent; border: none; margin: 0; padding: 0; }
-.sysinfo-group .widget, .net-group .widget { background-color: transparent; margin: 0; padding: 0 7px; }
-.sysinfo-group .progress-container { margin: 0 5px 0 0; }
+.sysinfo-group .widget, .net-group .widget { background-color: transparent; margin: 0; padding: 0 8px; }
 .cpu-widget .widget-container .icon,
 .memory-widget .widget-container .icon,
-.gpu-widget .widget-container .icon {
-    color: #8a6a6e;
-    font-family: var(--system-font);
-    font-size: 10px;
-    font-weight: 700;
-    padding: 0 4px 0 0;
+.gpu-widget .widget-container .icon,
+.traffic-widget .widget-container .icon {
+    color: #dc143c;
+    font-family: var(--icons-font-fallback);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0 5px 0 0;
 }
 .cpu-widget .widget-container .label,
 .memory-widget .widget-container .label,
-.gpu-widget .widget-container .label,
-.traffic-widget .widget-container .label {
-    color: var(--text);
+.gpu-widget .widget-container .label {
+    color: #f2e6e7;
     font-family: var(--system-font);
     font-size: 12px;
     font-weight: 600;
-    padding: 0;
+    min-width: 28px;
+    qproperty-alignment: 'AlignVCenter | AlignRight';
+    padding: 0 6px 0 0;
 }
+.sysinfo-group .progress-container { margin: 0; }
 .cpu-widget .label.status-high,
 .memory-widget .label.status-high,
 .gpu-widget .label.status-high { color: #ff5c7a; }
-.traffic-widget .widget-container .icon {
-    color: var(--accent);
+.traffic-widget .widget-container .label {
+    color: #f2e6e7;
     font-family: var(--system-font);
     font-size: 12px;
-    font-weight: 700;
-    padding: 0 3px 0 6px;
+    font-weight: 600;
+    min-width: 54px;
+    qproperty-alignment: 'AlignVCenter | AlignLeft';
+    padding: 0 6px 0 0;
 }
+.traffic-widget .widget-container .icon { padding: 0 3px 0 0; }
 /* Weather */
 .open-meteo-widget { padding: 0 6px; }
 .open-meteo-widget .widget-container .icon {
