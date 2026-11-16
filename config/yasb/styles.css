@@ -1887,33 +1887,61 @@ which is 16 pixels same as the other sections. */
     color: var(--accent);
 }
 
-/* System info: small crimson tags (cpu / ram / gpu), numbers in normal text */
+/* System info + network: dark boxes, crimson rings, fixed widths so nothing jumps */
+.sysinfo-group, .net-group {
+    background-color: transparent;
+    padding: 0;
+    margin: 0 4px;
+}
+.sysinfo-group .container, .net-group .container {
+    background-color: #160a0c;
+    border: 1px solid #3a1418;
+    border-radius: 6px;
+    margin: 5px 0;
+    padding: 0 4px;
+}
+.sysinfo-group .widget, .net-group .widget {
+    background-color: transparent;
+    margin: 0;
+    padding: 0 5px;
+}
+.sysinfo-group .progress-container {
+    margin-right: 5px;
+}
 .cpu-widget .widget-container .icon,
 .memory-widget .widget-container .icon,
 .gpu-widget .widget-container .icon {
-    color: var(--accent);
+    color: #a88a8e;
     font-family: var(--system-font);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    padding-right: 3px;
+    padding-right: 4px;
 }
 .cpu-widget .widget-container .label,
 .memory-widget .widget-container .label,
-.gpu-widget .widget-container .label,
-.traffic-widget .widget-container .label {
+.gpu-widget .widget-container .label {
     color: var(--text);
     font-family: var(--system-font);
     font-size: 12px;
-    padding: 0 2px;
+    font-weight: 600;
+    min-width: 30px;
 }
-.gpu-widget, .traffic-widget { padding: 0 4px; }
 .cpu-widget .label.status-high,
 .memory-widget .label.status-high,
 .gpu-widget .label.status-high { color: #ff5c7a; }
 .traffic-widget .widget-container .icon {
     color: var(--accent);
-    font-size: 11px;
-    padding: 0 1px 0 4px;
+    font-family: var(--system-font);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 0 2px 0 3px;
+}
+.traffic-widget .widget-container .label {
+    color: var(--text);
+    font-family: var(--system-font);
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 62px;
 }
 .gpu-popup, .traffic-menu {
     background-color: var(--background);
@@ -1946,5 +1974,10 @@ which is 16 pixels same as the other sections. */
 .volume-widget .widget-container .icon { color: var(--text); font-size: 15px; padding: 0 4px; }
 .volume-widget .widget-container .icon:hover { color: var(--accent); }
 /* Power menu button */
-.power-menu-widget .icon { color: var(--accent); }
+.power-menu-widget .icon {
+    color: var(--accent);
+    font-family: var(--icons-font-fallback);
+    font-size: 15px;
+    padding: 0 6px 0 4px;
+}
 .power-menu-widget .icon:hover { color: #ff5c7a; }

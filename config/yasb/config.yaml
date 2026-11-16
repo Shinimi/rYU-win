@@ -43,12 +43,8 @@ bars:
       - clock
       right:
       - weather
-      - lines
-      - cpu
-      - memory
-      - gpu
-      - traffic
-      - lines
+      - sysinfo_group
+      - net_group
       - quick_launch
       - systray
       - volume
@@ -150,7 +146,7 @@ widgets:
   power_menu:
     type: yasb.power_menu.PowerMenuWidget
     options:
-      label: "<span>\ueaf8</span>"
+      label: "<span>\uf011</span>"
       uptime: true
       show_user: true
       menu_style: popup
@@ -352,6 +348,17 @@ widgets:
       class_name: "separator-widget"
       callbacks:
         on_left: "do_nothing"
+  sysinfo_group:
+    # cpu / ram / gpu in one dark box
+    type: "yasb.grouper.GrouperWidget"
+    options:
+      class_name: "sysinfo-group"
+      widgets: ["cpu", "memory", "gpu"]
+  net_group:
+    type: "yasb.grouper.GrouperWidget"
+    options:
+      class_name: "net-group"
+      widgets: ["traffic"]
   weather:
     # first click: search your city, after that click for the forecast card
     type: "yasb.open_meteo.OpenMeteoWidget"
@@ -385,9 +392,19 @@ widgets:
   gpu:
     type: "yasb.gpu.GpuWidget"
     options:
-      label: "<span>gpu</span> {info[utilization]}%"
-      label_alt: "<span>vram</span> {info[mem_used]}/{info[mem_total]}"
+      label: "<span>GPU</span> {info[utilization]}%"
+      label_alt: "<span>VRAM</span> {info[mem_used]}/{info[mem_total]}"
       update_interval: 2000
+      hide_decimal: true
+      progress_bar:
+        enabled: true
+        progress_type: circular
+        size: 15
+        thickness: 2
+        color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
+        background_color: "#2a1217"
+        position: left
+        animation: true
       callbacks:
         on_left: toggle_label
         on_right: toggle_menu
@@ -402,8 +419,8 @@ widgets:
   traffic:
     type: "yasb.traffic.TrafficWidget"
     options:
-      label: "<span>\ueab4</span> {download_speed} <span>\ueab7</span> {upload_speed}"
-      label_alt: "<span>\ueab4</span> {download_speed}"
+      label: "<span>\u2193</span> {download_speed} <span>\u2191</span> {upload_speed}"
+      label_alt: "<span>\u2193</span> {download_speed}"
       update_interval: 1000
       speed_unit: bytes
       hide_decimal: true
@@ -466,9 +483,19 @@ widgets:
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
-      label: "<span>cpu</span> {info[percent][total]}%"
-      label_alt: "<span>cpu</span> {info[freq][current]} MHz"
+      label: "<span>CPU</span> {info[percent][total]}%"
+      label_alt: "<span>CPU</span> {info[freq][current]} MHz"
       update_interval: 2000
+      hide_decimal: true
+      progress_bar:
+        enabled: true
+        progress_type: circular
+        size: 15
+        thickness: 2
+        color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
+        background_color: "#2a1217"
+        position: left
+        animation: true
       cpu_thresholds:
         low: 25
         medium: 50
@@ -499,9 +526,19 @@ widgets:
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>ram</span> {virtual_mem_percent}%"
-      label_alt: "<span>ram</span> {virtual_mem_used}/{virtual_mem_total}"
-      update_interval: 5000
+      label: "<span>RAM</span> {virtual_mem_percent}%"
+      label_alt: "<span>RAM</span> {virtual_mem_used}/{virtual_mem_total}"
+      update_interval: 3000
+      hide_decimal: true
+      progress_bar:
+        enabled: true
+        progress_type: circular
+        size: 15
+        thickness: 2
+        color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
+        background_color: "#2a1217"
+        position: left
+        animation: true
       callbacks:
         on_left: "toggle_label"
         on_right: "toggle_menu"
