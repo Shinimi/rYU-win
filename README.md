@@ -11,7 +11,7 @@ should be fine on regular Windows 10 22H2. Windows 11 works for most of it but i
 | | |
 |---|---|
 | **Tiling** | [GlazeWM](https://github.com/glzr-io/glazewm), 9 workspaces on the main screen, 1 on the side screen |
-| **Bar** | [YASB](https://github.com/amnweb/yasb), based on [Akira_YASB](https://github.com/MrDLingters/Akira_YASB) by MrDLingters, recolored. Workspaces 1-9 always visible, every open app (all workspaces) by name, weather, cpu/ram/gpu, network speed, volume (scroll on it), power menu |
+| **Bar** | [YASB](https://github.com/amnweb/yasb), based on [Akira_YASB](https://github.com/MrDLingters/Akira_YASB) by MrDLingters, recolored. Workspaces 1-9 always visible, every open app (all workspaces) by name - click one to jump to it, weather, cpu/ram/gpu with small meters, network speed, volume (scroll on it), tray icons in a popout, power menu. Clicking the stats opens crimson popouts with graphs |
 | **Borders** | [tacky-borders](https://github.com/lukeyou05/tacky-borders), spinning crimson gradient + glow on the focused window |
 | **Taskbar** | hidden with [thide](https://github.com/amnweb/thide) |
 | **Launcher** | [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher) on Win+Space, crimson theme |
@@ -23,6 +23,8 @@ should be fine on regular Windows 10 22H2. Windows 11 works for most of it but i
 | **Terminal** | Windows Terminal (portable build, works on LTSC) + [fastfetch](https://github.com/fastfetch-cli/fastfetch) + small prompt |
 | **Side screen** | Discord, Spotify, Telegram and Steam open there by themselves, plus [btop4win](https://github.com/aristocratos/btop4win) as a crimson system monitor |
 | **Workspace animation** | `rYuSwitch`, a tiny helper I wrote that slides/fades the old workspace out |
+| **Games** | Unity / Unreal games and a list of others (Genshin, ZZZ, Star Rail, CS2, Warframe...) tile like normal windows instead of floating. Set them to windowed or borderless |
+| **Admin mode** | optional, experimental `admin` module tries to run GlazeWM as admin at login so the keybinds keep working inside games that run as admin (Genshin & co.) |
 | **Apps** | themes for Discord (Vencord/Vesktop), Spotify (Spicetify), Steam (Millennium), Telegram, Waterfox, Helium, Vivaldi |
 
 ## Install
@@ -34,7 +36,7 @@ should be fine on regular Windows 10 22H2. Windows 11 works for most of it but i
 4. Sign out and back in once.
 
 Everything is split into modules, so you can also do `install.cmd core icons` from a terminal.
-Apps are downloaded from their official GitHub releases while installing, nothing prebuilt is shipped here.
+Apps are downloaded from their official GitHub releases while installing. The small helpers are compiled on your PC during install (see License for the one exception).
 
 Your old GlazeWM / YASB / tacky-borders configs get backed up next to the new ones as `*.before-rYu`.
 
@@ -76,6 +78,10 @@ which is where the YASB wallpaper picker looks). Lock screen uses whatever your 
   at the top of `modules/wsanim/rYuSwitch.cs`. Don't like it? `uninstall.cmd wsanim`.
 - Glass too dark or too see-through: change `a=` in `modules/glass/config.ini` (higher = more solid) and run the glass module again.
 - Steam and Telegram need a couple of clicks by hand, see the README in their module folders.
+- Tray icons live in the popout behind the arrow on the bar. Alt+drag an icon onto the bar to pin it there.
+- Games that run as admin ignore the keybinds unless GlazeWM is admin too, that's what the `admin` module is for.
+  It doesn't work on every PC yet. If it can't start GlazeWM as admin it puts the normal autostart back.
+  The bar itself is always started as a normal app, otherwise tray icons don't show up.
 - Logs end up in `%TEMP%\rYu-win\`.
 
 ## Layout

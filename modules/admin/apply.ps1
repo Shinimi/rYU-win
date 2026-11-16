@@ -8,9 +8,11 @@ try {
 
   # take them out of the normal autostart
   $run = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run'
+  $removed = @{}
   $props = Get-ItemProperty $run
   foreach ($p in $props.PSObject.Properties) {
     if ($p.Value -is [string] -and ($p.Value -match 'glazewm\.exe' -or $p.Value -match 'tacky-borders\.exe')) {
+      $removed[$p.Name] = $p.Value
       Remove-ItemProperty $run -Name $p.Name
       Write-Host "removed autostart: $($p.Name)"
     }
@@ -18,7 +20,10 @@ try {
   $su = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
   Get-ChildItem $su -Filter *.lnk -ErrorAction SilentlyContinue | ForEach-Object {
     $t = (New-Object -ComObject WScript.Shell).CreateShortcut($_.FullName).TargetPath
-    if ($t -match 'glazewm|tacky-borders') { Remove-Item $_.FullName -Force; Write-Host "removed startup shortcut: $($_.Name)" }
+    if ($t -match 'glazewm|tacky-borders') {
+      $bak = "$env:TEMP\rYu-win\startup-backup"; New-Item -ItemType Directory -Force $bak | Out-Null
+      Move-Item $_.FullName $bak -Force; Write-Host "moved startup shortcut: $($_.Name)"
+    }
   }
 
   $set = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit ([TimeSpan]::Zero) -MultipleInstances IgnoreNew
@@ -34,7 +39,20 @@ try {
   # restart them as admin now
   foreach ($p in 'glazewm', 'rYuSwitch', 'tacky-borders') { Get-Process $p -ErrorAction SilentlyContinue | Stop-Process -Force }
   Start-Sleep 2
-  Start-ScheduledTask 'rYu GlazeWM'
-  if ($tacky) { Start-ScheduledTask 'rYu tacky-borders' }
-  Ok 'GlazeWM + borders run as admin from login on'
+  try { Start-ScheduledTask 'rYu GlazeWM' -ErrorAction Stop } catch { Write-Host "task error: $_" }
+  if ($tacky) { try { Start-ScheduledTask 'rYu tacky-borders' -ErrorAction Stop } catch { } }
+  Start-Sleep 4
+
+  if (Get-Process glazewm -ErrorAction SilentlyContinue) {
+    Ok 'GlazeWM + borders run as admin from login on'
+  } else {
+    # some setups refuse to start an elevated task (0x800702E4), put everything back
+    Write-Host 'The admin task did not start on this PC, going back to normal autostart.' -ForegroundColor Yellow
+    'rYu GlazeWM', 'rYu tacky-borders' | ForEach-Object { Unregister-ScheduledTask $_ -Confirm:$false -ErrorAction SilentlyContinue }
+    foreach ($k in $removed.Keys) { New-ItemProperty $run -Name $k -Value $removed[$k] -PropertyType String -Force | Out-Null }
+    $bak = "$env:TEMP\rYu-win\startup-backup"
+    if (Test-Path $bak) { Get-ChildItem $bak -Filter *.lnk | Move-Item -Destination $su -Force }
+    Start-Process $glaze -ArgumentList 'start'
+    if ($tacky) { Start-Process $tacky.FullName }
+  }
 } catch { Write-Host "Something failed: $_" -ForegroundColor Yellow }
