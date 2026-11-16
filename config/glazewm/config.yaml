@@ -117,11 +117,7 @@ window_rules:
     match:
       - window_class: { equals: 'UnityWndClass' }
       - window_class: { equals: 'UnrealWindow' }
-      - window_process: { equals: 'GenshinImpact' }
-      - window_process: { equals: 'YuanShen' }
-      - window_process: { equals: 'ZenlessZoneZero' }
-      - window_process: { equals: 'StarRail' }
-      - window_process: { equals: 'Client-Win64-Shipping' }
+      - window_process: { regex: '(?i)^(ASBR|Warframe\.x64|cs2|CrimsonDesert|P3R|OnimushaWotS|Celeste|GenshinImpact|YuanShen|ZenlessZoneZero|StarRail|.*-Win64-Shipping)$' }
 
   # side screen: chat, music, Steam and the system monitor open there by themselves
   - commands: ['move --workspace 10']

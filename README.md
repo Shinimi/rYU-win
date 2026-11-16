@@ -97,4 +97,4 @@ MIT for my own stuff (scripts, configs, icons, rYuSwitch). The bundled cursor fi
 and everything that gets downloaded keeps its own license.
 
 The only prebuilt file here is `modules/core/ryu-click.exe` (70 KB), built from `ryu-click.c` next to it with MinGW:
-`x86_64-w64-mingw32-gcc -O2 -s -mwindows -o ryu-click.exe ryu-click.c -lshell32`
+`x86_64-w64-mingw32-gcc -O2 -s -mwindows -o ryu-click.exe ryu-click.c -lshell32 -lws2_32`
