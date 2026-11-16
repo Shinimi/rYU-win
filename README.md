@@ -1,10 +1,6 @@
 <h1 align="center">rYu-win</h1>
 <p align="center">crimson, tiling, quiet. my Windows 10 setup.</p>
 
-<p align="center">
-  <img src="screenshots/desktop.png" width="90%">
-</p>
-
 Started this because I wanted Hyprland on Windows and kept getting most of the way there.
 It's GlazeWM for tiling, YASB on top, red animated borders, no taskbar, and everything
 recolored dark red / near black. Built and used daily on **Windows 10 IoT Enterprise LTSC 2021**,
@@ -27,17 +23,6 @@ should be fine on regular Windows 10 22H2. Windows 11 works for most of it but i
 | **Terminal** | Windows Terminal (portable build, works on LTSC) + [fastfetch](https://github.com/fastfetch-cli/fastfetch) + small prompt |
 | **Workspace animation** | `rYuSwitch`, a tiny helper I wrote that slides/fades the old workspace out |
 | **Apps** | themes for Discord (Vencord/Vesktop), Spotify (Spicetify), Steam (Millennium), Telegram, Waterfox, Helium, Vivaldi |
-
-## Screenshots
-
-<p align="center">
-  <img src="screenshots/explorer.png" width="48%">
-  <img src="screenshots/terminal.png" width="48%">
-</p>
-<p align="center">
-  <img src="screenshots/rightclick.png" width="30%">
-  <img src="screenshots/startmenu.png" width="30%">
-</p>
 
 ## Install
 
