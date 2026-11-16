@@ -26,12 +26,12 @@ Backup-Once "$ydir\config.yaml"; Backup-Once "$ydir\styles.css"
 $walls = "$env:USERPROFILE\Pictures\Wallpapers"
 New-Item -ItemType Directory -Force $walls | Out-Null
 Get-ChildItem "$RepoRoot\wallpapers" -File -Include *.jpg,*.jpeg,*.png -Recurse -ErrorAction SilentlyContinue | Copy-Item -Destination $walls -Force
-$y = [IO.File]::ReadAllText("$cfg\yasb\config.yaml").Replace('__WALLPAPERS__', $walls.Replace('\', '\\'))
+$y = [IO.File]::ReadAllText("$cfg\yasb\config.yaml").Replace('__WALLPAPERS__', $walls.Replace('\', '\\')).Replace('__YASBDIR__', $ydir)
 Write-Text "$ydir\config.yaml" $y
 Copy-Item "$cfg\yasb\styles.css" "$ydir\styles.css" -Force
 # ryu-apps.exe feeds the "open apps" part of the bar
 $fx = "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319"
-& "$fx\csc.exe" /nologo /target:exe /optimize+ "/out:$ydir\ryu-apps.exe" "/r:$fx\System.Web.Extensions.dll" "$PSScriptRoot\ryu-apps.cs" | Out-Null
+& "$fx\csc.exe" /nologo /target:winexe /optimize+ "/out:$ydir\ryu-apps.exe" "/r:$fx\System.Web.Extensions.dll" "$PSScriptRoot\ryu-apps.cs" | Out-Null
 if ($LASTEXITCODE -ne 0) { Warn 'could not build ryu-apps.exe, the open apps list will stay empty' }
 Ok 'YASB'
 

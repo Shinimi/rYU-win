@@ -1,5 +1,7 @@
-// ryu-apps - prints every app open in GlazeWM (all workspaces) as JSON for a YASB custom widget.
-// {"apps": "Firefox   Discord   Steam", "count": 3}
+// ryu-apps - open apps from GlazeWM (all workspaces) for YASB custom widgets.
+//   ryu-apps.exe              {"apps": "Firefox    Discord", "count": 2, "focused": "Discord"}
+//   ryu-apps.exe --slot N        name of the Nth app (empty when there is none)
+//   ryu-apps.exe --focus-slot N  jumps to the Nth app's window (and its workspace)
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -56,10 +58,12 @@ static class RyuApps {
             foreach (var k in (ArrayList)kids) Walk(k, found);
     }
 
-    static string Query() {
+    static string Query() { return Ipc("query workspaces"); }
+
+    static string Ipc(string message) {
         using (var ws = new ClientWebSocket()) {
             if (!ws.ConnectAsync(new Uri("ws://127.0.0.1:6123"), CancellationToken.None).Wait(800)) return null;
-            var msg = Encoding.UTF8.GetBytes("query workspaces");
+            var msg = Encoding.UTF8.GetBytes(message);
             ws.SendAsync(new ArraySegment<byte>(msg), WebSocketMessageType.Text, true, CancellationToken.None).Wait(800);
             var watch = Stopwatch.StartNew();
             while (watch.ElapsedMilliseconds < 1500) {
@@ -70,16 +74,23 @@ static class RyuApps {
                     r = task.Result; sb.Append(Encoding.UTF8.GetString(buf, 0, r.Count));
                 } while (!r.EndOfMessage);
                 string s = sb.ToString();
-                if (s.Contains("\"clientMessage\":\"query workspaces\"")) return s;
+                if (s.Contains("\"clientMessage\":\"" + message + "\"")) return s;
             }
         }
         return null;
     }
 
-    static void Main() {
+    static void Main(string[] args) {
         Console.OutputEncoding = new UTF8Encoding(false);
         var js = new JavaScriptSerializer { MaxJsonLength = int.MaxValue };
+
+        int slot = 0;
+        bool focusSlot = args.Length == 2 && args[0] == "--focus-slot";
+        if (args.Length == 2 && (args[0] == "--slot" || focusSlot)) int.TryParse(args[1], out slot);
+
+        // app name -> window id (the focused window wins if the app has several)
         var names = new List<string>();
+        var ids = new Dictionary<string, string>();
         string focused = "";
         try {
             string q = Query();
@@ -91,8 +102,8 @@ static class RyuApps {
                 // workspace order: 1, 2, ... 9, then the rest
                 wss.Sort((a, b) => {
                     int x, y;
-                    bool xa = int.TryParse((string)a["name"], out x), yb = int.TryParse((string)b["name"], out y);
-                    if (!xa) x = 999; if (!yb) y = 999;
+                    if (!int.TryParse((string)a["name"], out x)) x = 999;
+                    if (!int.TryParse((string)b["name"], out y)) y = 999;
                     return x.CompareTo(y);
                 });
                 foreach (var w in wss) {
@@ -100,17 +111,27 @@ static class RyuApps {
                     Walk(w, wins);
                     foreach (var win in wins) {
                         string n = Pretty(win);
-                        if ((bool)win["hasFocus"]) focused = n;
-                        if (!names.Contains(n)) names.Add(n);
+                        bool f = (bool)win["hasFocus"];
+                        if (f) focused = n;
+                        if (!names.Contains(n)) { names.Add(n); ids[n] = (string)win["id"]; }
+                        else if (f) ids[n] = (string)win["id"];
                     }
                 }
             }
         } catch { }
+
+        if (slot > 0) {
+            if (slot > names.Count) return;   // nothing printed -> YASB hides the slot
+            string n = names[slot - 1];
+            Guid g;
+            if (focusSlot) { if (Guid.TryParse(ids[n], out g)) Ipc("command focus --container-id " + g.ToString()); return; }
+            Console.Write(n == focused ? "\u2022 " + n : n);
+            return;
+        }
         var parts = new List<string>();
-        foreach (var n in names) parts.Add(n == focused ? "• " + n : n);
-        var outObj = new Dictionary<string, object> {
+        foreach (var n in names) parts.Add(n == focused ? "\u2022 " + n : n);
+        Console.Write(js.Serialize(new Dictionary<string, object> {
             {"apps", string.Join("    ", parts)}, {"count", names.Count}, {"focused", focused}
-        };
-        Console.Write(js.Serialize(outObj));
+        }));
     }
 }

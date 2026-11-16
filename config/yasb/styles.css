@@ -1981,3 +1981,170 @@ which is 16 pixels same as the other sections. */
     padding: 0 6px 0 4px;
 }
 .power-menu-widget .icon:hover { color: #ff5c7a; }
+
+/* ===================== Open apps (clickable) ===================== */
+.apps-group { background-color: transparent; padding: 0; margin: 0 2px; }
+.apps-group .container { background-color: transparent; }
+.apps-group .widget { background-color: transparent; margin: 0; padding: 0; }
+.app-slot .widget-container { background-color: transparent; padding: 0; }
+.app-slot .label {
+    color: var(--subtext);
+    font-family: var(--system-font);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 8px;
+    margin: 6px 0;
+    border-radius: 4px;
+}
+.app-slot .label:hover {
+    color: #ffffff;
+    background-color: #2a1217;
+}
+
+/* ===================== Popouts ===================== */
+/* shared look: near-black card, thin crimson edge, soft dividers */
+.cpu-popup, .memory-popup, .gpu-popup, .traffic-menu, .audio-menu,
+.open-meteo-card, .power-menu-compact {
+    background-color: #0e0708;
+    border: 1px solid #5a1020;
+    border-radius: 10px;
+    font-family: var(--system-font);
+}
+
+/* cpu / ram / gpu graphs */
+.cpu-popup, .memory-popup, .gpu-popup { min-width: 360px; max-width: 360px; }
+.cpu-popup .header, .memory-popup .header, .gpu-popup .header {
+    background: transparent;
+    border-bottom: 1px solid #2a1217;
+    padding: 12px 16px;
+}
+.cpu-popup .header .text, .memory-popup .header .text, .gpu-popup .header .text {
+    color: #f2e6e7;
+    font-size: 15px;
+    font-weight: 700;
+}
+.cpu-popup .header .pin-btn, .memory-popup .header .pin-btn, .gpu-popup .header .pin-btn { color: #6e5256; }
+.cpu-popup .header .pin-btn:hover, .memory-popup .header .pin-btn:hover, .gpu-popup .header .pin-btn:hover,
+.cpu-popup .header .pin-btn.pinned, .memory-popup .header .pin-btn.pinned, .gpu-popup .header .pin-btn.pinned { color: #dc143c; }
+.cpu-popup .graph-container, .memory-popup .graph-container, .gpu-popup .graph-container {
+    background: transparent;
+    min-height: 70px;
+    margin: 8px 16px 0 16px;
+}
+.cpu-popup .cpu-graph, .memory-popup .memory-graph, .gpu-popup .gpu-graph { color: #dc143c; }
+.cpu-popup .cpu-graph-grid, .memory-popup .memory-graph-grid, .gpu-popup .gpu-graph-grid { color: #1e0c10; }
+.cpu-popup .graph-title, .memory-popup .graph-title, .gpu-popup .graph-title {
+    color: #a88a8e;
+    font-size: 11px;
+    font-weight: 600;
+}
+.cpu-popup .stats, .memory-popup .stats, .gpu-popup .stats { background: transparent; padding: 12px 16px 16px 16px; }
+.cpu-popup .stats .stat-item, .memory-popup .stats .stat-item, .gpu-popup .stats .stat-item {
+    background-color: #160a0c;
+    border: 1px solid #2a1217;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+.cpu-popup .stats .stat-label, .memory-popup .stats .stat-label, .gpu-popup .stats .stat-label {
+    color: #a88a8e;
+    font-size: 11px;
+    font-weight: 600;
+}
+.cpu-popup .stats .stat-value, .memory-popup .stats .stat-value, .gpu-popup .stats .stat-value {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* network */
+.traffic-menu { min-width: 300px; padding: 4px; }
+.traffic-menu .header { background: transparent; border-bottom: 1px solid #2a1217; padding: 10px 12px; }
+.traffic-menu .header .title, .traffic-menu .title { color: #f2e6e7; font-size: 15px; font-weight: 700; }
+.traffic-menu .section-title { color: #dc143c; font-size: 11px; font-weight: 700; padding: 8px 12px 2px 12px; }
+.traffic-menu .section { background-color: #160a0c; border: 1px solid #2a1217; border-radius: 8px; margin: 4px 8px; padding: 6px; }
+.traffic-menu .speed-value { color: #ffffff; font-size: 18px; font-weight: 700; }
+.traffic-menu .speed-unit { color: #a88a8e; font-size: 11px; }
+.traffic-menu .speed-separator { background-color: #2a1217; max-width: 1px; }
+.traffic-menu .data-text { color: #a88a8e; font-size: 12px; }
+.traffic-menu .data-value { color: #f2e6e7; font-size: 12px; font-weight: 600; }
+.traffic-menu .interface-info, .traffic-menu .internet-info { color: #a88a8e; font-size: 11px; padding: 4px 12px; }
+.traffic-menu .reset-button {
+    background-color: #2a1217; color: #f2e6e7; border: none; border-radius: 6px;
+    padding: 4px 10px; margin: 6px 12px 10px 12px; font-size: 12px;
+}
+.traffic-menu .reset-button:hover { background-color: #dc143c; color: #ffffff; }
+
+/* volume */
+.audio-menu { min-width: 300px; padding: 10px; }
+.audio-menu .system-volume-container .volume-slider { border: none; }
+.audio-menu .audio-container .device {
+    background-color: transparent; border: none; border-radius: 6px;
+    padding: 6px 8px; color: #a88a8e; font-size: 12px;
+}
+.audio-menu .audio-container .device.selected { background-color: #2a1217; color: #ffffff; }
+.audio-menu .audio-container .device:hover { background-color: #1e0c10; color: #f2e6e7; }
+.audio-menu .toggle-apps { background-color: transparent; border: none; color: #a88a8e; border-radius: 6px; }
+.audio-menu .toggle-apps.expanded, .audio-menu .toggle-apps:hover { background-color: #2a1217; color: #ffffff; }
+.audio-menu .apps-container { background-color: #160a0c; border: 1px solid #2a1217; border-radius: 8px; padding: 8px; margin-top: 12px; }
+.audio-menu .apps-container .app-volume .app-icon-container { border-radius: 6px; }
+.audio-menu .apps-container .app-volume .app-icon-container:hover { background-color: #2a1217; }
+.audio-menu .app-label { color: #a88a8e; font-size: 11px; }
+.audio-menu .volume-slider::groove:horizontal, .audio-menu .app-slider::groove:horizontal {
+    background: #2a1217; height: 4px; border-radius: 2px;
+}
+.audio-menu .volume-slider::sub-page:horizontal, .audio-menu .app-slider::sub-page:horizontal {
+    background: #dc143c; border-radius: 2px;
+}
+.audio-menu .volume-slider::handle:horizontal, .audio-menu .app-slider::handle:horizontal {
+    background: #ff5c7a; width: 12px; height: 12px; margin: -4px 0; border-radius: 6px;
+}
+
+/* weather */
+.open-meteo-card { padding: 4px; }
+.open-meteo-card-today .label { color: #f2e6e7; font-size: 13px; }
+.open-meteo-card-today .label.location { color: #ffffff; font-size: 20px; font-weight: 700; }
+.open-meteo-card-today .label.sunrisesunset { color: #a88a8e; font-size: 12px; }
+.open-meteo-card-today .label.sunrisesunset-icon { color: #dc143c; font-size: 14px; }
+.open-meteo-card-day {
+    background-color: #160a0c; border: 1px solid #2a1217; border-radius: 8px;
+    padding: 6px 8px; margin: 2px;
+}
+.open-meteo-card-day:hover { background-color: #1e0c10; }
+.open-meteo-card-day.active { background-color: #2a1217; border: 1px solid #dc143c; }
+.open-meteo-card-day .day-name { color: #a88a8e; font-size: 12px; font-weight: 600; }
+.open-meteo-card-day .day-temp-max { color: #ffffff; font-size: 15px; font-weight: 700; }
+.open-meteo-card-day .day-temp-min { color: #a88a8e; font-size: 12px; }
+.open-meteo-card .hourly-container { background-color: #160a0c; border: 1px solid #2a1217; border-radius: 8px; margin: 6px 2px; }
+.open-meteo-card .hourly-data { color: #f2e6e7; font-size: 11px; }
+.open-meteo-card .hourly-data.temperature { color: #ff5c7a; }
+.open-meteo-card .hourly-data-button { background-color: transparent; color: #a88a8e; border: none; border-radius: 6px; padding: 4px 8px; }
+.open-meteo-card .hourly-data-button.active, .open-meteo-card .hourly-data-button:hover { background-color: #2a1217; color: #ffffff; }
+.open-meteo-card .search-head { color: #ffffff; font-size: 16px; font-weight: 700; }
+.open-meteo-card .search-description { color: #a88a8e; font-size: 12px; }
+.open-meteo-card .search-input {
+    background-color: #160a0c; color: #f2e6e7; border: 1px solid #3a1418; border-radius: 6px; padding: 6px 8px;
+}
+.open-meteo-card .search-input:focus { border: 1px solid #dc143c; }
+.open-meteo-card .search-results { background-color: #0e0708; color: #f2e6e7; border: none; }
+.open-meteo-card .search-results::item { padding: 6px; border-radius: 6px; }
+.open-meteo-card .search-results::item:hover { background-color: #2a1217; }
+
+/* power menu */
+.power-menu-compact { padding: 10px; min-width: 260px; }
+.power-menu-compact .profile-info .profile-username { color: #ffffff; font-size: 15px; font-weight: 700; }
+.power-menu-compact .profile-info .profile-account-type,
+.power-menu-compact .profile-info .profile-email,
+.power-menu-compact .uptime { color: #a88a8e; font-size: 11px; }
+.power-menu-compact .manage-accounts { background-color: #160a0c; color: #f2e6e7; border: 1px solid #2a1217; border-radius: 6px; }
+.power-menu-compact .manage-accounts:hover { background-color: #2a1217; }
+.power-menu-compact .button {
+    background-color: #160a0c; border: 1px solid #2a1217; border-radius: 8px;
+    padding: 8px; margin: 3px;
+}
+.power-menu-compact .button .icon { color: #dc143c; font-size: 18px; }
+.power-menu-compact .button .label { color: #f2e6e7; font-size: 12px; font-weight: 600; }
+.power-menu-compact .button.hover { background-color: #2a1217; border: 1px solid #dc143c; }
+.power-menu-compact .button.shutdown.hover, .power-menu-compact .button.restart.hover { background-color: #dc143c; border: 1px solid #ff5c7a; }
+.power-menu-compact .button.shutdown.hover .icon, .power-menu-compact .button.shutdown.hover .label,
+.power-menu-compact .button.restart.hover .icon, .power-menu-compact .button.restart.hover .label { color: #ffffff; }
+.power-menu-compact .icon.hover, .power-menu-compact .label.hover { color: #ffffff; }
