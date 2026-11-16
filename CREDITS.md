@@ -18,3 +18,4 @@
 | [Vencord](https://github.com/Vendicated/Vencord) / [Vesktop](https://github.com/Vencord/Vesktop) | Vendicated | Discord theming |
 | [Spicetify](https://github.com/spicetify/cli) | spicetify | Spotify theming |
 | [Millennium](https://steambrew.app) + Simple Dark | SteamClientHomebrew, ShadowMonster | Steam theming |
+| [btop4win](https://github.com/aristocratos/btop4win) | aristocratos | system monitor on the side screen |

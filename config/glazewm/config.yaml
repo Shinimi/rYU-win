@@ -3,7 +3,7 @@
 # (GlazeWM's own borders only work on Windows 11).
 #
 # Win+1..9          workspace 1..9 (main screen)
-# Win+Shift+1..9    send window there, Win+Shift+0 sends it to the side screen
+# Win+Shift+1..9    send window there, Win+Shift+0 sends it to the side screen, Win+0 goes there
 # Win+Arrows        focus, Win+Shift+Arrows moves the window
 # Win+Q close | Win+V float/tile | Win+F fullscreen | Win+T flip split
 # Win+Space launcher | Win+Enter terminal
@@ -11,7 +11,7 @@
 
 general:
   # create workspaces 1-9 right away so the bar always shows all of them
-  startup_commands: ['focus --workspace 2', 'focus --workspace 3', 'focus --workspace 4', 'focus --workspace 5', 'focus --workspace 6', 'focus --workspace 7', 'focus --workspace 8', 'focus --workspace 9', 'focus --workspace 1']
+  startup_commands: ['shell-exec %LOCALAPPDATA%\btop4win\btop4win.exe', 'focus --workspace 2', 'focus --workspace 3', 'focus --workspace 4', 'focus --workspace 5', 'focus --workspace 6', 'focus --workspace 7', 'focus --workspace 8', 'focus --workspace 9', 'focus --workspace 1']
   shutdown_commands: []
   # Alt+Shift+R also restarts the bar (YASB) and the borders
   config_reload_commands: ['shell-exec --hide-window %USERPROFILE%\.glzr\glazewm\reload-all.cmd', 'focus --workspace 2', 'focus --workspace 3', 'focus --workspace 4', 'focus --workspace 5', 'focus --workspace 6', 'focus --workspace 7', 'focus --workspace 8', 'focus --workspace 9', 'focus --workspace 1']
@@ -111,6 +111,16 @@ window_rules:
       - window_process: { equals: 'ShellExperienceHost' }
       - window_process: { equals: 'SearchApp' }
 
+  # side screen: chat, music, Steam and the system monitor open there by themselves
+  - commands: ['move --workspace 10']
+    match:
+      - window_process: { equals: 'Discord' }
+      - window_process: { equals: 'vesktop' }
+      - window_process: { equals: 'Spotify' }
+      - window_process: { equals: 'Telegram' }
+      - window_process: { equals: 'steamwebhelper' }
+      - window_process: { equals: 'btop4win' }
+
 binding_modes: []
 
 keybindings:
@@ -152,6 +162,9 @@ keybindings:
     bindings: ['lwin+shift+9']
   - commands: ['move --workspace 10']
     bindings: ['lwin+shift+0']
+  # Win+0 jumps to the side screen
+  - commands: ['focus --workspace 10']
+    bindings: ['lwin+0']
   - commands: ['focus --direction left']
     bindings: ['lwin+left']
   - commands: ['move --direction left']

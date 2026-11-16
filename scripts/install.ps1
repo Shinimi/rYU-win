@@ -24,13 +24,14 @@ $list = [ordered]@{
   'animations' = 'turn Windows window animations back on'
   'terminal'   = 'Windows Terminal + fastfetch + prompt (Win+Enter)'
   'wsanim'     = 'slide/fade animation when switching workspaces'
+  'sidescreen' = 'btop system monitor on the side screen'
   'lockscreen' = 'lock + sign-in screen use your wallpaper'
   'discord'    = 'Vesktop / Vencord theme'
   'spotify'    = 'Spicetify theme (desktop Spotify)'
   'browsers'   = 'Waterfox theme (Helium/Vivaldi: see README)'
   'steam'      = 'Millennium installer for the Steam theme'
 }
-$default = 'core','accent','glass','icons','cursor','rightclick','animations','terminal','wsanim'
+$default = 'core','accent','glass','icons','cursor','rightclick','animations','terminal','wsanim','sidescreen'
 
 if (-not $Modules) {
   Write-Host ''

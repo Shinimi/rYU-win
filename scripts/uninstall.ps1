@@ -23,6 +23,7 @@ $list = [ordered]@{
   'animations' = 'turn Windows window animations back on'
   'terminal'   = 'Windows Terminal + fastfetch + prompt (Win+Enter)'
   'wsanim'     = 'slide/fade animation when switching workspaces'
+  'sidescreen' = 'btop system monitor on the side screen'
   'lockscreen' = 'lock + sign-in screen use your wallpaper'
   'discord'    = 'Vesktop / Vencord theme'
   'spotify'    = 'Spicetify theme (desktop Spotify)'

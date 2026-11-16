@@ -21,6 +21,7 @@ should be fine on regular Windows 10 22H2. Windows 11 works for most of it but i
 | **Start menu** | [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu), Win7 layout, dark |
 | **Right click** | [Nilesoft Shell](https://nilesoft.org) with a crimson theme |
 | **Terminal** | Windows Terminal (portable build, works on LTSC) + [fastfetch](https://github.com/fastfetch-cli/fastfetch) + small prompt |
+| **Side screen** | Discord, Spotify, Telegram and Steam open there by themselves, plus [btop4win](https://github.com/aristocratos/btop4win) as a crimson system monitor |
 | **Workspace animation** | `rYuSwitch`, a tiny helper I wrote that slides/fades the old workspace out |
 | **Apps** | themes for Discord (Vencord/Vesktop), Spotify (Spicetify), Steam (Millennium), Telegram, Waterfox, Helium, Vivaldi |
 
@@ -51,6 +52,7 @@ which is where the YASB wallpaper picker looks). Lock screen uses whatever your 
 |---|---|
 | `Win + 1..9` | go to workspace |
 | `Win + Shift + 1..9` | send window to workspace |
+| `Win + 0` | go to the side screen |
 | `Win + Shift + 0` | send window to the side screen |
 | `Win + Arrows` | focus left / right / up / down |
 | `Win + Shift + Arrows` | move window |
