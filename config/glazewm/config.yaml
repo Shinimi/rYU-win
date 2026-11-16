@@ -10,10 +10,11 @@
 # Alt+Shift+R reload everything | Alt+Shift+E quit
 
 general:
-  startup_commands: []
+  # create workspaces 1-9 right away so the bar always shows all of them
+  startup_commands: ['focus --workspace 2', 'focus --workspace 3', 'focus --workspace 4', 'focus --workspace 5', 'focus --workspace 6', 'focus --workspace 7', 'focus --workspace 8', 'focus --workspace 9', 'focus --workspace 1']
   shutdown_commands: []
   # Alt+Shift+R also restarts the bar (YASB) and the borders
-  config_reload_commands: ['shell-exec --hide-window %USERPROFILE%\.glzr\glazewm\reload-all.cmd']
+  config_reload_commands: ['shell-exec --hide-window %USERPROFILE%\.glzr\glazewm\reload-all.cmd', 'focus --workspace 2', 'focus --workspace 3', 'focus --workspace 4', 'focus --workspace 5', 'focus --workspace 6', 'focus --workspace 7', 'focus --workspace 8', 'focus --workspace 9', 'focus --workspace 1']
   focus_follows_cursor: false
   toggle_workspace_on_refocus: false
   cursor_jump:

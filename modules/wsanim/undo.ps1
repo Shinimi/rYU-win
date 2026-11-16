@@ -8,7 +8,7 @@ if (Test-Path $cfg) {
     for ($i = 1; $i -le 9; $i++) { $add += "  - commands: ['focus --workspace $i']`n    bindings: ['lwin+$i']`n" }
     $text = [regex]::Replace($text, "(?m)^keybindings:\r?\n", "keybindings:`n$add")
   }
-  $text = $text.Replace("startup_commands: ['shell-exec %LOCALAPPDATA%\rYuSwitch\rYuSwitch.exe']", "startup_commands: []")
+  $text = $text.Replace("'shell-exec %LOCALAPPDATA%\rYuSwitch\rYuSwitch.exe', ", "")
   Write-Text $cfg $text
   & "$env:ProgramFiles\glzr.io\GlazeWM\cli\glazewm.exe" command wm-reload-config | Out-Null
 }

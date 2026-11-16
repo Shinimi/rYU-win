@@ -19,7 +19,7 @@ if (-not (Get-Process rYuSwitch -ErrorAction SilentlyContinue)) { throw 'rYuSwit
 $cfg = "$env:USERPROFILE\.glzr\glazewm\config.yaml"
 $text = [IO.File]::ReadAllText($cfg)
 $text = [regex]::Replace($text, "(?m)^  - commands: \['focus --workspace [1-9]'\]\r?\n    bindings: \['lwin\+[1-9]'\]\r?\n", '')
-$text = $text.Replace("startup_commands: []", "startup_commands: ['shell-exec %LOCALAPPDATA%\rYuSwitch\rYuSwitch.exe']")
+if ($text -notmatch "rYuSwitch.exe") { $text = $text.Replace("startup_commands: [", "startup_commands: ['shell-exec %LOCALAPPDATA%\rYuSwitch\rYuSwitch.exe', ") }
 Write-Text $cfg $text
 & "$env:ProgramFiles\glzr.io\GlazeWM\cli\glazewm.exe" command wm-reload-config | Out-Null
 Ok 'workspace switch animation'
