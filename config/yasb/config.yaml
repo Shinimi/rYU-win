@@ -122,7 +122,7 @@ widgets:
         blur: false
         round_corners: true
         round_corners_type: normal
-        border_color: "#5a1020"
+        border_color: "#dc143c"
         alignment: right
         direction: down
         show_apps: true
@@ -155,7 +155,7 @@ widgets:
         direction: down
         round_corners: true
         round_corners_type: normal
-        border_color: "#5a1020"
+        border_color: "#dc143c"
         alignment: right
         offset_left: 12
       profile_image_size: 64
@@ -377,7 +377,7 @@ widgets:
         blur: false
         round_corners: true
         round_corners_type: normal
-        border_color: "#5a1020"
+        border_color: "#dc143c"
         alignment: right
         direction: down
         offset_top: 6
@@ -399,14 +399,15 @@ widgets:
       progress_bar:
         enabled: true
         progress_type: circular
-        size: 15
+        size: 12
         thickness: 2
         color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
         background_color: "#2a1217"
         position: left
         animation: true
       callbacks:
-        on_left: toggle_label
+        on_left: toggle_menu
+        on_middle: toggle_label
         on_right: toggle_menu
       menu:
         enabled: true
@@ -414,7 +415,7 @@ widgets:
         show_graph: true
         show_graph_grid: true
         round_corners: true
-        border_color: "#5a1020"
+        border_color: "#dc143c"
         blur: false
   traffic:
     type: "yasb.traffic.TrafficWidget"
@@ -431,7 +432,7 @@ widgets:
       menu:
         blur: false
         round_corners: true
-        border_color: "#5a1020"
+        border_color: "#dc143c"
         alignment: right
         direction: down
   apps_group:
@@ -450,14 +451,14 @@ widgets:
       label_max_length: 18
       class_name: "app-slot"
       exec_options:
-        run_cmd: '"__YASBDIR__\ryu-apps.exe" --slot 1'
+        run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 1'
         run_interval: 1500
         return_format: "string"
         hide_empty: true
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps.exe" --focus-slot 1'
+        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 1'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app2:
@@ -469,14 +470,14 @@ widgets:
       label_max_length: 18
       class_name: "app-slot"
       exec_options:
-        run_cmd: '"__YASBDIR__\ryu-apps.exe" --slot 2'
+        run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 2'
         run_interval: 1500
         return_format: "string"
         hide_empty: true
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps.exe" --focus-slot 2'
+        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 2'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app3:
@@ -488,14 +489,14 @@ widgets:
       label_max_length: 18
       class_name: "app-slot"
       exec_options:
-        run_cmd: '"__YASBDIR__\ryu-apps.exe" --slot 3'
+        run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 3'
         run_interval: 1500
         return_format: "string"
         hide_empty: true
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps.exe" --focus-slot 3'
+        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 3'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app4:
@@ -507,14 +508,14 @@ widgets:
       label_max_length: 18
       class_name: "app-slot"
       exec_options:
-        run_cmd: '"__YASBDIR__\ryu-apps.exe" --slot 4'
+        run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 4'
         run_interval: 1500
         return_format: "string"
         hide_empty: true
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps.exe" --focus-slot 4'
+        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 4'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app5:
@@ -526,14 +527,14 @@ widgets:
       label_max_length: 18
       class_name: "app-slot"
       exec_options:
-        run_cmd: '"__YASBDIR__\ryu-apps.exe" --slot 5'
+        run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 5'
         run_interval: 1500
         return_format: "string"
         hide_empty: true
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps.exe" --focus-slot 5'
+        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 5'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app6:
@@ -545,14 +546,14 @@ widgets:
       label_max_length: 18
       class_name: "app-slot"
       exec_options:
-        run_cmd: '"__YASBDIR__\ryu-apps.exe" --slot 6'
+        run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 6'
         run_interval: 1500
         return_format: "string"
         hide_empty: true
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps.exe" --focus-slot 6'
+        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 6'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app7:
@@ -564,14 +565,14 @@ widgets:
       label_max_length: 18
       class_name: "app-slot"
       exec_options:
-        run_cmd: '"__YASBDIR__\ryu-apps.exe" --slot 7'
+        run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 7'
         run_interval: 1500
         return_format: "string"
         hide_empty: true
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps.exe" --focus-slot 7'
+        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 7'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   app8:
@@ -583,14 +584,14 @@ widgets:
       label_max_length: 18
       class_name: "app-slot"
       exec_options:
-        run_cmd: '"__YASBDIR__\ryu-apps.exe" --slot 8'
+        run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 8'
         run_interval: 1500
         return_format: "string"
         hide_empty: true
         use_shell: false
         encoding: "utf-8"
       callbacks:
-        on_left: 'exec "__YASBDIR__\ryu-apps.exe" --focus-slot 8'
+        on_left: 'exec "__YASBDIR__\ryu-apps-click.exe" --focus-slot 8'
         on_middle: "do_nothing"
         on_right: "do_nothing"
   open_apps:
@@ -649,7 +650,7 @@ widgets:
       progress_bar:
         enabled: true
         progress_type: circular
-        size: 15
+        size: 12
         thickness: 2
         color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
         background_color: "#2a1217"
@@ -671,7 +672,8 @@ widgets:
         - "\u2588" # 80%+
       histogram_num_columns: 8
       callbacks:
-        on_left: "toggle_label"
+        on_left: "toggle_menu"
+        on_middle: "toggle_label"
         on_right: "toggle_menu"
       menu:
         enabled: true
@@ -680,7 +682,7 @@ widgets:
         show_graph_grid: true
         graph_history_size: 60
         round_corners: true
-        border_color: "#5a1020"
+        border_color: "#dc143c"
         blur: false
   memory:
     type: "yasb.memory.MemoryWidget"
@@ -692,7 +694,7 @@ widgets:
       progress_bar:
         enabled: true
         progress_type: circular
-        size: 15
+        size: 12
         thickness: 2
         color: ["#8b0a1e", "#dc143c", "#ff5c7a"]
         background_color: "#2a1217"
@@ -722,7 +724,7 @@ widgets:
         show_graph_grid: true
         graph_history_size: 60
         round_corners: true
-        border_color: "#5a1020"
+        border_color: "#dc143c"
         blur: false
   systeminfo-grouper:
     type: "yasb.grouper.GrouperWidget"
