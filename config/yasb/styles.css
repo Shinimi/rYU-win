@@ -1868,3 +1868,21 @@ which is 16 pixels same as the other sections. */
 .audio-visualizer-widget .audio-visualizer-canvas {
     qproperty-fillbrush: var(--accent);
 }
+
+/* Open apps (all workspaces, app names only) */
+.open-apps {
+    padding: 0 6px;
+}
+.open-apps .widget-container {
+    background-color: transparent;
+}
+.open-apps .label {
+    color: var(--text);
+    font-family: var(--system-font);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 4px;
+}
+.open-apps .label.alt {
+    color: var(--accent);
+}

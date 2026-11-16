@@ -29,6 +29,10 @@ Get-ChildItem "$RepoRoot\wallpapers" -File -Include *.jpg,*.jpeg,*.png -Recurse 
 $y = [IO.File]::ReadAllText("$cfg\yasb\config.yaml").Replace('__WALLPAPERS__', $walls.Replace('\', '\\'))
 Write-Text "$ydir\config.yaml" $y
 Copy-Item "$cfg\yasb\styles.css" "$ydir\styles.css" -Force
+# ryu-apps.exe feeds the "open apps" part of the bar
+$fx = "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319"
+& "$fx\csc.exe" /nologo /target:exe /optimize+ "/out:$ydir\ryu-apps.exe" "/r:$fx\System.Web.Extensions.dll" "$PSScriptRoot\ryu-apps.cs" | Out-Null
+if ($LASTEXITCODE -ne 0) { Warn 'could not build ryu-apps.exe, the open apps list will stay empty' }
 Ok 'YASB'
 
 # ---- tacky-borders

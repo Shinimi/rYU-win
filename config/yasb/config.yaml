@@ -38,7 +38,7 @@ bars:
       - lines
       - glazewm_workspaces
       - lines
-      - taskbar
+      - open_apps
       center:
       - clock
       right:
@@ -340,6 +340,26 @@ widgets:
       class_name: "separator-widget"
       callbacks:
         on_left: "do_nothing"
+  open_apps:
+    # every app open on any workspace, by app name (ryu-apps.exe asks GlazeWM)
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "{data[apps]}"
+      label_alt: "{data[count]} apps open"
+      label_placeholder: ""
+      label_max_length: 120
+      class_name: "open-apps"
+      exec_options:
+        run_cmd: '"%USERPROFILE%\.config\yasb\ryu-apps.exe"'
+        run_interval: 1000
+        return_format: "json"
+        hide_empty: true
+        use_shell: true
+        encoding: "utf-8"
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
   taskbar:
     type: "yasb.taskbar.TaskbarWidget"
     options:
