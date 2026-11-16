@@ -453,7 +453,7 @@ widgets:
       class_name: "app-slot"
       exec_options:
         run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 1'
-        run_interval: 1500
+        run_interval: 1000
         return_format: "string"
         hide_empty: true
         use_shell: false
@@ -472,7 +472,7 @@ widgets:
       class_name: "app-slot"
       exec_options:
         run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 2'
-        run_interval: 1500
+        run_interval: 1000
         return_format: "string"
         hide_empty: true
         use_shell: false
@@ -491,7 +491,7 @@ widgets:
       class_name: "app-slot"
       exec_options:
         run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 3'
-        run_interval: 1500
+        run_interval: 1000
         return_format: "string"
         hide_empty: true
         use_shell: false
@@ -510,7 +510,7 @@ widgets:
       class_name: "app-slot"
       exec_options:
         run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 4'
-        run_interval: 1500
+        run_interval: 1000
         return_format: "string"
         hide_empty: true
         use_shell: false
@@ -529,7 +529,7 @@ widgets:
       class_name: "app-slot"
       exec_options:
         run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 5'
-        run_interval: 1500
+        run_interval: 1000
         return_format: "string"
         hide_empty: true
         use_shell: false
@@ -548,7 +548,7 @@ widgets:
       class_name: "app-slot"
       exec_options:
         run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 6'
-        run_interval: 1500
+        run_interval: 1000
         return_format: "string"
         hide_empty: true
         use_shell: false
@@ -567,7 +567,7 @@ widgets:
       class_name: "app-slot"
       exec_options:
         run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 7'
-        run_interval: 1500
+        run_interval: 1000
         return_format: "string"
         hide_empty: true
         use_shell: false
@@ -586,7 +586,7 @@ widgets:
       class_name: "app-slot"
       exec_options:
         run_cmd: '"__YASBDIR__\ryu-list.exe" --slot 8'
-        run_interval: 1500
+        run_interval: 1000
         return_format: "string"
         hide_empty: true
         use_shell: false

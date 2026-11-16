@@ -129,6 +129,17 @@ static class RyuApps {
         } catch { }
 
         if (focusSlot) Log("click on slot " + slot + ", apps found: " + names.Count);
+        // slot 1 also saves slot -> window id for ryu-click (the instant click helper)
+        if (slot == 1 && !focusSlot) {
+            try {
+                var sb = new StringBuilder();
+                for (int i = 0; i < names.Count; i++) sb.Append((i + 1) + " " + ids[names[i]] + "\n");
+                string p = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ryu-apps.cache");
+                System.IO.File.WriteAllText(p + ".tmp", sb.ToString());
+                if (System.IO.File.Exists(p)) System.IO.File.Delete(p);
+                System.IO.File.Move(p + ".tmp", p);
+            } catch { }
+        }
         if (slot > 0) {
             if (slot > names.Count) return;   // nothing printed -> YASB hides the slot
             string n = names[slot - 1];

@@ -111,6 +111,18 @@ window_rules:
       - window_process: { equals: 'ShellExperienceHost' }
       - window_process: { equals: 'SearchApp' }
 
+  # games open tiled like any other app (fill the workspace under the bar, with gaps)
+  # set the game itself to Windowed or Borderless, not exclusive Fullscreen
+  - commands: ['set-tiling']
+    match:
+      - window_class: { equals: 'UnityWndClass' }
+      - window_class: { equals: 'UnrealWindow' }
+      - window_process: { equals: 'GenshinImpact' }
+      - window_process: { equals: 'YuanShen' }
+      - window_process: { equals: 'ZenlessZoneZero' }
+      - window_process: { equals: 'StarRail' }
+      - window_process: { equals: 'Client-Win64-Shipping' }
+
   # side screen: chat, music, Steam and the system monitor open there by themselves
   - commands: ['move --workspace 10']
     match:

@@ -95,3 +95,6 @@ See [CREDITS.md](CREDITS.md). Huge thanks to everyone there, this is mostly thei
 
 MIT for my own stuff (scripts, configs, icons, rYuSwitch). The bundled cursor files are GPL-3.0 like Bibata itself,
 and everything that gets downloaded keeps its own license.
+
+The only prebuilt file here is `modules/core/ryu-click.exe` (70 KB), built from `ryu-click.c` next to it with MinGW:
+`x86_64-w64-mingw32-gcc -O2 -s -mwindows -o ryu-click.exe ryu-click.c -lshell32`
