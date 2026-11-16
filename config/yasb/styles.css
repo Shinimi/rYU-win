@@ -2127,3 +2127,46 @@ which is 16 pixels same as the other sections. */
 .power-menu-compact .button.shutdown.hover .icon, .power-menu-compact .button.shutdown.hover .label,
 .power-menu-compact .button.restart.hover .icon, .power-menu-compact .button.restart.hover .label { color: #ffffff; }
 .power-menu-compact .icon.hover, .power-menu-compact .label.hover { color: #ffffff; }
+/* ---------- Tray: plain icons, no boxes ---------- */
+.systray {
+    background: transparent;
+    margin: 0 2px;
+}
+.systray .widget-container,
+.systray .pinned-container,
+.systray .unpinned-container {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.systray .button {
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 3px;
+    margin: 0;
+    min-width: 16px;
+    min-height: 16px;
+}
+.systray .button:hover {
+    background: #2a1217;
+}
+.systray .button:pressed {
+    background: #3a1219;
+}
+.systray .button.drag-over {
+    background: #5a1020;
+}
+.systray .unpinned-visibility-btn {
+    background: transparent;
+    border: none;
+    color: #dc143c;
+    padding: 0 4px;
+}
+.systray .unpinned-visibility-btn:hover {
+    color: #ff5c7a;
+}
+.systray .unpinned-visibility-btn:checked {
+    color: #ff5c7a;
+}
