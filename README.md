@@ -11,7 +11,7 @@ should be fine on regular Windows 10 22H2. Windows 11 works for most of it but i
 | | |
 |---|---|
 | **Tiling** | [GlazeWM](https://github.com/glzr-io/glazewm), 9 workspaces on the main screen, 1 on the side screen |
-| **Bar** | [YASB](https://github.com/amnweb/yasb), based on [Akira_YASB](https://github.com/MrDLingters/Akira_YASB) by MrDLingters, recolored. Workspaces 1-9 always visible, plus every open app (all workspaces) by name |
+| **Bar** | [YASB](https://github.com/amnweb/yasb), based on [Akira_YASB](https://github.com/MrDLingters/Akira_YASB) by MrDLingters, recolored. Workspaces 1-9 always visible, every open app (all workspaces) by name, weather, cpu/ram/gpu, network speed, volume (scroll on it), power menu |
 | **Borders** | [tacky-borders](https://github.com/lukeyou05/tacky-borders), spinning crimson gradient + glow on the focused window |
 | **Taskbar** | hidden with [thide](https://github.com/amnweb/thide) |
 | **Launcher** | [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher) on Win+Space, crimson theme |

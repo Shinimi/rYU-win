@@ -42,12 +42,20 @@ bars:
       center:
       - clock
       right:
-      - quick_launch
+      - weather
       - lines
+      - cpu
+      - memory
+      - gpu
+      - traffic
+      - lines
+      - quick_launch
       - systray
+      - volume
       - wallpapers
       - notifications
       - control_center
+      - power_menu
 widgets:
   glazewm_workspaces:
     type: "glazewm.workspaces.GlazewmWorkspacesWidget"
@@ -98,23 +106,27 @@ widgets:
   volume:
     type: yasb.volume.VolumeWidget
     options:
-      label: "<span>{icon}</span> {level}"
-      label_alt: "{level}"
+      # icon only - scroll on it to change volume, click for the mixer, right click mutes
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span> {level}"
       tooltip: true
+      scroll_step: 2
+      slider_beep: false
       icons:
-        "muted": "\uf026" # Icon for muted
-        "10": "\uf026"  # Icon for 0-10% volume
-        "30": "\uf026"  # Icon for 11-30% volume
-        "60": "\uf026"  # Icon for 31-60% volume
-        "100": "\uf026" # Icon for 61-100% volume
+        "muted": "\ueee8"
+        "10": "\uf026"
+        "30": "\uf027"
+        "60": "\uf027"
+        "100": "\uf028"
       callbacks:
         on_left: toggle_volume_menu
+        on_middle: toggle_label
         on_right: toggle_mute
       audio_menu:
         blur: false
         round_corners: true
         round_corners_type: normal
-        border_color: system
+        border_color: "#dc143c"
         alignment: right
         direction: down
         show_apps: true
@@ -147,7 +159,7 @@ widgets:
         direction: down
         round_corners: true
         round_corners_type: normal
-        border_color: System
+        border_color: "#dc143c"
         alignment: right
         offset_left: 12
       profile_image_size: 64
@@ -340,6 +352,71 @@ widgets:
       class_name: "separator-widget"
       callbacks:
         on_left: "do_nothing"
+  weather:
+    # first click: search your city, after that click for the forecast card
+    type: "yasb.open_meteo.OpenMeteoWidget"
+    options:
+      label: "<span>{icon}</span> {temp}"
+      label_alt: "{location} {temp} {condition_text}"
+      update_interval: 1800
+      hide_decimal: true
+      units: metric
+      tooltip: true
+      callbacks:
+        on_left: toggle_card
+        on_middle: do_nothing
+        on_right: toggle_label
+      weather_card:
+        blur: false
+        round_corners: true
+        round_corners_type: normal
+        border_color: "#dc143c"
+        alignment: right
+        direction: down
+        offset_top: 6
+        icon_size: 48
+        show_hourly_forecast: true
+        time_format: "24h"
+        current_line_color: "#ff5c7a"
+        hourly_gradient:
+          enabled: true
+          top_color: "#dc143c"
+          bottom_color: "#120809"
+  gpu:
+    type: "yasb.gpu.GpuWidget"
+    options:
+      label: "<span>gpu</span> {info[utilization]}%"
+      label_alt: "<span>vram</span> {info[mem_used]}/{info[mem_total]}"
+      update_interval: 2000
+      callbacks:
+        on_left: toggle_label
+        on_right: toggle_menu
+      menu:
+        enabled: true
+        direction: down
+        show_graph: true
+        show_graph_grid: true
+        round_corners: true
+        border_color: "#dc143c"
+        blur: false
+  traffic:
+    type: "yasb.traffic.TrafficWidget"
+    options:
+      label: "<span>\ueab4</span> {download_speed} <span>\ueab7</span> {upload_speed}"
+      label_alt: "<span>\ueab4</span> {download_speed}"
+      update_interval: 1000
+      speed_unit: bytes
+      hide_decimal: true
+      max_label_length: 0
+      callbacks:
+        on_left: toggle_menu
+        on_right: toggle_label
+      menu:
+        blur: false
+        round_corners: true
+        border_color: "#dc143c"
+        alignment: right
+        direction: down
   open_apps:
     # every app open on any workspace, by app name (ryu-apps.exe asks GlazeWM)
     type: "yasb.custom.CustomWidget"
@@ -389,8 +466,8 @@ widgets:
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
-      label: "<span>\uf4bc</span> {info[percent][total]}%"
-      label_alt: "<span>\uf437</span> {info[freq][current]} MHz"
+      label: "<span>cpu</span> {info[percent][total]}%"
+      label_alt: "<span>cpu</span> {info[freq][current]} MHz"
       update_interval: 2000
       cpu_thresholds:
         low: 25
@@ -417,13 +494,13 @@ widgets:
         show_graph_grid: true
         graph_history_size: 60
         round_corners: true
-        border_color: None
+        border_color: "#dc143c"
         blur: false
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>\uf4bc</span> {virtual_mem_used}/{virtual_mem_total}"
-      label_alt: "<span>\uf4bc</span> VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%"
+      label: "<span>ram</span> {virtual_mem_percent}%"
+      label_alt: "<span>ram</span> {virtual_mem_used}/{virtual_mem_total}"
       update_interval: 5000
       callbacks:
         on_left: "toggle_label"
@@ -449,7 +526,7 @@ widgets:
         show_graph_grid: true
         graph_history_size: 60
         round_corners: true
-        border_color: None
+        border_color: "#dc143c"
         blur: false
   systeminfo-grouper:
     type: "yasb.grouper.GrouperWidget"

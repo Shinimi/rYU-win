@@ -1886,3 +1886,65 @@ which is 16 pixels same as the other sections. */
 .open-apps .label.alt {
     color: var(--accent);
 }
+
+/* System info: small crimson tags (cpu / ram / gpu), numbers in normal text */
+.cpu-widget .widget-container .icon,
+.memory-widget .widget-container .icon,
+.gpu-widget .widget-container .icon {
+    color: var(--accent);
+    font-family: var(--system-font);
+    font-size: 11px;
+    font-weight: 700;
+    padding-right: 3px;
+}
+.cpu-widget .widget-container .label,
+.memory-widget .widget-container .label,
+.gpu-widget .widget-container .label,
+.traffic-widget .widget-container .label {
+    color: var(--text);
+    font-family: var(--system-font);
+    font-size: 12px;
+    padding: 0 2px;
+}
+.gpu-widget, .traffic-widget { padding: 0 4px; }
+.cpu-widget .label.status-high,
+.memory-widget .label.status-high,
+.gpu-widget .label.status-high { color: #ff5c7a; }
+.traffic-widget .widget-container .icon {
+    color: var(--accent);
+    font-size: 11px;
+    padding: 0 1px 0 4px;
+}
+.gpu-popup, .traffic-menu {
+    background-color: var(--background);
+    border: 1px solid var(--accent);
+}
+/* Weather */
+.open-meteo-widget { padding: 0 6px; }
+.open-meteo-widget .widget-container .icon {
+    color: var(--accent);
+    font-size: 15px;
+    padding-right: 4px;
+}
+.open-meteo-widget .widget-container .label {
+    color: var(--text);
+    font-family: var(--system-font);
+    font-size: 13px;
+}
+.open-meteo-card {
+    background-color: var(--background);
+    border: 1px solid var(--accent);
+}
+.open-meteo-card .label { color: var(--text); font-family: var(--system-font); }
+.open-meteo-card .label.location { font-size: 22px; font-weight: 700; }
+.open-meteo-card .label.alert { color: #ff5c7a; }
+.open-meteo-card-day { border: 1px solid var(--border); background-color: transparent; }
+.open-meteo-card-day.active { border: 1px solid var(--accent); background-color: var(--mutedBG); }
+.search-head { color: var(--text); font-size: 15px; font-weight: 700; }
+.search-description { color: var(--subtext); }
+/* Volume: icon only */
+.volume-widget .widget-container .icon { color: var(--text); font-size: 15px; padding: 0 4px; }
+.volume-widget .widget-container .icon:hover { color: var(--accent); }
+/* Power menu button */
+.power-menu-widget .icon { color: var(--accent); }
+.power-menu-widget .icon:hover { color: #ff5c7a; }
