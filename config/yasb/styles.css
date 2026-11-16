@@ -2170,3 +2170,27 @@ which is 16 pixels same as the other sections. */
 .systray .unpinned-visibility-btn:checked {
     color: #ff5c7a;
 }
+
+/* ---------- Tray popout ---------- */
+.systray-popup {
+    background-color: #0e0708;
+    border: 1px solid #5a1020;
+    border-radius: 10px;
+    padding: 6px;
+}
+.systray-popup-container {
+    background: transparent;
+}
+.systray-popup .button {
+    background-color: #160a0c;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 2px;
+}
+.systray-popup .button:hover {
+    background-color: #2a1217;
+}
+.systray-popup .button.drag-over {
+    background-color: #5a1020;
+}
