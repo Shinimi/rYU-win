@@ -48,6 +48,13 @@ which is where the YASB wallpaper picker looks). Lock screen uses whatever your 
 `uninstall.cmd` - same menu, every module has an undo. It doesn't uninstall the apps themselves
 (GlazeWM, YASB etc.), it just stops them, takes them out of autostart and puts your configs back.
 
+**Undo everything:** `reset.cmd` puts Windows back to how it was before rYu-win. It undoes every module,
+uninstalls everything the installer added (GlazeWM, YASB, tacky-borders, thide, Flow Launcher, Open-Shell,
+Nilesoft Shell, AccentColorizer, ExplorerBlurMica, btop, the portable Terminal, fastfetch, Spicetify), sets the
+accent and console colors back to the Windows defaults and deletes the leftovers. It asks you to type `YES` first
+and copies your configs to a `rYu-win-backup-...` folder on the desktop. Wallpapers and your apps (Discord,
+Spotify, Steam, Telegram) stay. The Telegram / Steam / browser themes need a click by hand, it tells you which.
+
 ## Keybinds
 
 | keys | what |
@@ -87,6 +94,7 @@ which is where the YASB wallpaper picker looks). Lock screen uses whatever your 
 ## Layout
 
 ```
+install.cmd / uninstall.cmd / reset.cmd
 config/      GlazeWM, YASB, tacky-borders, Flow Launcher
 modules/     one folder per part, each with apply.ps1 / undo.ps1
 scripts/     installer + shared helpers

@@ -59,7 +59,8 @@ function Restart-Explorer {
   Start-Sleep 2
   if (-not (Get-Process explorer -ErrorAction SilentlyContinue)) { Start-Process explorer.exe }
   $th = "$env:LOCALAPPDATA\thide\thide.exe"
-  if (Test-Path $th) { Start-Sleep 3; Start-Process $th -ArgumentList 'start' }
+  $auto = (Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -ErrorAction SilentlyContinue).thide
+  if ((Test-Path $th) -and $auto) { Start-Sleep 3; Start-Process $th -ArgumentList 'start' }
 }
 
 # Starts a program as the normal (non-admin) user even from an admin shell.
